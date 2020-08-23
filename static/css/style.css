@@ -1,0 +1,19 @@
+    main {
+        margin-top: 86px;
+    }
+    
+
+    .navbar input[type=text]{
+        width:150px !important;
+    }
+
+    /* Small screen settings */
+    @media screen and (min-width: 576px) {
+        .navbar input[type=text]{
+            width:200px !important;
+        }
+
+        main {
+            margin-top: 70px;
+        }
+    }

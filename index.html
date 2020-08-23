@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Rob Morgan">
+
+    <title>Starter Template · Bootstrap</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/static/css/bootstrap.css" rel="stylesheet">
+    <!-- Other CSS -->
+    <link rel="stylesheet" href="static/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-xs navbar-dark bg-dark fixed-top justify-content-between">
+        <a class="navbar-brand" href="#">gzetr.</a>
+        <div class="col-xs-auto">
+            
+        </div>
+        <div class="col-xs-6">
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="text" placeholder="e.g. Samoa" aria-label="Search">
+                <button class="btn btn-secondary my-2 my-sm-0" type="submit"><i class="fas fa-search" alt="Search"></i></button>
+            </form>
+        </div>
+    </nav>
+
+<main role="main" class="container">
+
+    
+    <div class="container">
+        <!-- Row with two halves. left side is map, right side is primary info -->
+        <div class="row">
+            <div class="col-xs-12 col-md-6">
+                <p>LEFT SIDE</p>
+            </div>
+            <div class="col-xs-12 col-md-6">
+                <p>RIGHT SIDE</p>
+            </div>
+        </div>
+        <!-- Row with background info. full width. hidden on small devices -->
+        <div class="row">
+            <div class="d-none d-md-block">
+                <p>SOME BACKGROUND INFO</p>
+            </div>
+            
+        </div>
+
+        <!-- Row with buttons for additional info. Each button opens a modal. -->
+        <div class="row">
+            <!-- Modal Trigger Buttons -->
+            <button type="button" class="btn btn-primary mr-sm-3 my-2 col-xs-12 col-sm-4 col-lg-2" data-toggle="modal" data-target="#economy">
+                <i class="fas fa-chart-line mr-2"></i>Economy
+            </button>
+            
+            <button type="button" class="btn btn-primary mr-sm-3 my-2 col-xs-12 col-sm-4 col-lg-2" data-toggle="modal" data-target="#demographics">
+                <i class="fas fa-users mr-2"></i>Demographics
+            </button>
+
+            <!-- Modals -->
+            <!-- Economy -->
+            <div class="modal fade" id="economy" tabindex="-1" aria-labelledby="economyModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h5 class="modal-title" id="economyModalLabel">Economy</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>
+                    <div class="modal-body">
+                    ...
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+                </div>
+            </div>
+
+            <!-- Demographics -->
+            <div class="modal fade" id="demographics" tabindex="-1" aria-labelledby="economyModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h5 class="modal-title" id="demographicsModalLabel">Demographics</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>
+                    <div class="modal-body">
+                    ...
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</main>
+
+<script src="/static/js/jquery-3.5.1.js"></script>
+<script src="/static/js/bootstrap.js"></script>
+
+</html>
