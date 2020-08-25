@@ -10,18 +10,25 @@
 
     <!-- Bootstrap core CSS -->
     <link href="/static/css/bootstrap.css" rel="stylesheet">
+
     <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
     integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
     crossorigin=""/>
-    <!-- Other CSS -->
-    <link rel="stylesheet" href="static/css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
-
     <!-- Leaftlet JS -->
     <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
     integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
     crossorigin=""></script>
+
+    <!-- Other CSS -->
+    <link rel="stylesheet" href="static/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+
+    
+
+    <!-- MapBox -->
+    <!-- <script src='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css' rel='stylesheet' /> -->
   </head>
 
   <body>
@@ -38,353 +45,352 @@
         </div>
     </nav>
 
-<main role="main" class="container mb-5">
+    <main role="main" class="container mb-5">
 
-    
-    <div class="container">
-        <div class="row mb-3">
-            <div class="col-xs-12 col-md-6 mb-3 mt-3">
-                <div id="mapid"></div>
-            </div>
-
-            <div class="col-xs-12 col-md-6">
-                <div class="container">
-                    <div class="row justify-content-between">
-                        <div class="col-xs-4">
-                            <h3>United States</h3>
-                            <h34 class="text-muted">America / American</h4>
-                        </div>
-                        <div class="col-xs-4">
-                            <img src="https://via.placeholder.com/130x75.png?text=Flag" alt="flag">
-                        </div>
-                    </div>
-                </div>
-                <div class="container mt-3">
-
-                    <div class="row justify-content-between">
-                        <div class="mr-4">
-                            Capital City:
-                        </div>
-                        <div class="">
-                            Washington D.C.
-                        </div>
-                    </div>
-
-                    <div class="row justify-content-between">
-                        <div class="mr-4">
-                            Area:
-                        </div>
-                        <div class="">
-                            5830853085038053m2
-                        </div>
-                    </div>
-
-                    <div class="row justify-content-between">
-                        <div class="mr-4">
-                            Population:
-                        </div>
-                        <div class="">
-                            316,000,000
-                        </div>
-                    </div>
-
-                    <div class="row justify-content-between">
-                        <div class="mr-4">
-                            GDP
-                        </div>
-                        <div class="">
-                            $6 trillion
-                        </div>
-                    </div>
-
-                    <div class="row justify-content-between">
-                        <div class="mr-4">
-                            GDP/Capita
-                        </div>
-                        <div class="">
-                            $42,000
-                        </div>
-                    </div>
-
-                    <div class="row justify-content-between">
-                        <div class="mr-4">
-                            Main Language:
-                        </div>
-                        <div class="">
-                            English
-                        </div>
-                    </div>
-
-
-                    <div class="row justify-content-between">
-                        <div class="mr-4">
-                            TLD:
-                        </div>
-                        <div class="">
-                            .com
-                        </div>
-                    </div>
-
-
-                    <div class="row justify-content-between">
-                        <div class="mr-4">
-                            Calling Code:
-                        </div>
-                        <div class="">
-                            +1
-                        </div>
-                    </div>
-
-
-                    <div class="row justify-content-between">
-                        <div class="mr-4">
-                            Currency:
-                        </div>
-                        <div class="">
-                            $ (Dollar)
-                        </div>
-                    </div>
-
-                    <div class="row justify-content-between">
-                        <div class="mr-4">
-                            Wikipedia:
-                        </div>
-                        <div class="">
-                            <a href="https://wikipedia.com">United States</a>
-                        </div>
-                    </div>
+        
+        <div class="container">
+            <div class="row mb-3">
+                <div class="col-xs-12 col-md-6 mb-3 mt-3">
+                    <div id="mapid"></div>
                 </div>
 
+                <div class="col-xs-12 col-md-6">
+                    <div class="container">
+                        <div class="row justify-content-between">
+                            <div class="col-xs-4">
+                                <h3>United States</h3>
+                                <h34 class="text-muted">America / American</h4>
+                            </div>
+                            <div class="col-xs-4">
+                                <img src="https://via.placeholder.com/130x75.png?text=Flag" alt="flag">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container mt-3">
+
+                        <div class="row justify-content-between">
+                            <div class="mr-4">
+                                Capital City:
+                            </div>
+                            <div class="">
+                                Washington D.C.
+                            </div>
+                        </div>
+
+                        <div class="row justify-content-between">
+                            <div class="mr-4">
+                                Area:
+                            </div>
+                            <div class="">
+                                5830853085038053m2
+                            </div>
+                        </div>
+
+                        <div class="row justify-content-between">
+                            <div class="mr-4">
+                                Population:
+                            </div>
+                            <div class="">
+                                316,000,000
+                            </div>
+                        </div>
+
+                        <div class="row justify-content-between">
+                            <div class="mr-4">
+                                GDP
+                            </div>
+                            <div class="">
+                                $6 trillion
+                            </div>
+                        </div>
+
+                        <div class="row justify-content-between">
+                            <div class="mr-4">
+                                GDP/Capita
+                            </div>
+                            <div class="">
+                                $42,000
+                            </div>
+                        </div>
+
+                        <div class="row justify-content-between">
+                            <div class="mr-4">
+                                Main Language:
+                            </div>
+                            <div class="">
+                                English
+                            </div>
+                        </div>
+
+
+                        <div class="row justify-content-between">
+                            <div class="mr-4">
+                                TLD:
+                            </div>
+                            <div class="">
+                                .com
+                            </div>
+                        </div>
+
+
+                        <div class="row justify-content-between">
+                            <div class="mr-4">
+                                Calling Code:
+                            </div>
+                            <div class="">
+                                +1
+                            </div>
+                        </div>
+
+
+                        <div class="row justify-content-between">
+                            <div class="mr-4">
+                                Currency:
+                            </div>
+                            <div class="">
+                                $ (Dollar)
+                            </div>
+                        </div>
+
+                        <div class="row justify-content-between">
+                            <div class="mr-4">
+                                Wikipedia:
+                            </div>
+                            <div class="">
+                                <a href="https://wikipedia.com">United States</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
             </div>
+
+            <div class="row mb-3">
+                <div class="d-none d-md-block mt-4">
+                    <p>Britain's American colonies broke with the mother country in 1776 and were recognized as the new nation of the United States of America following the Treaty of Paris in 1783. During the 19th and 20th centuries, 37 new states were added to the original 13 as the nation expanded across the North American continent and acquired a number of overseas possessions. The two most traumatic experiences in the nation's history were the Civil War (1861-65), in which a northern Union of states defeated a secessionist Confederacy of 11 southern slave states, and the Great Depression of the 1930s, an economic downturn during which about a quarter of the labor force lost its jobs. Buoyed by victories in World Wars I and II and the end of the Cold War in 1991, the US remains the world's most powerful nation state. Since the end of World War II, the economy has achieved relatively steady growth, low unemployment and inflation, and rapid advances in technology.</p>
+                </div>
+                
+            </div>
+
+            <div class="row justify-content-around">
+                <!-- Modal Trigger Buttons -->
+                <button type="button" class="btn btn-primary mr-sm-3 my-2 d-md-none col-sm-4" data-toggle="modal" data-target="#background">
+                    <i class="fas fa-chart-line mr-2"></i>Background
+                </button>
+
+                <button type="button" class="btn btn-primary mr-sm-3 my-2 col-12 col-sm-4 col-lg-3" data-toggle="modal" data-target="#economy">
+                    <i class="fas fa-chart-line mr-2"></i>Economy
+                </button>
+                
+                <button type="button" class="btn btn-primary mr-sm-3 my-2 col-12 col-sm-4 col-lg-3" data-toggle="modal" data-target="#demographics">
+                    <i class="fas fa-users mr-2"></i>Demographics
+                </button>
+
+                <button type="button" class="btn btn-primary mr-sm-3 my-2 col-12 col-sm-4 col-lg-3" data-toggle="modal" data-target="#climate">
+                    <i class="fas fa-cloud mr-2"></i>Climate
+                </button>
+
+                <button type="button" class="btn btn-primary mr-sm-3 my-2 col-12 col-sm-4 col-lg-3" data-toggle="modal" data-target="#education">
+                    <i class="fas fa-book-open mr-2"></i>Education
+                </button>
+
+                <button type="button" class="btn btn-primary mr-sm-3 my-2 col-12 col-sm-4 col-lg-3" data-toggle="modal" data-target="#geography">
+                    <i class="fas fa-mountain mr-2"></i>Geography
+                </button>
+
+                <button type="button" class="btn btn-primary mr-sm-3 my-2 col-12 col-sm-4 col-lg-3" data-toggle="modal" data-target="#timezones">
+                    <i class="fas fa-clock mr-2"></i>Timezones
+                </button>
+
+                <button type="button" class="btn btn-primary mr-sm-3 my-2 col-12 col-sm-4 col-lg-3" data-toggle="modal" data-target="#health">
+                    <i class="fas fa-heartbeat mr-2"></i>Health
+                </button>
+
+
+                <!-- Modals -->
+                <!-- Background -->
+                <div class="modal fade" id="background" tabindex="-1" aria-labelledby="backgroundModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title" id="backgroundModalLabel">Background</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        </div>
+                        <div class="modal-body">
+                        ...
+                        </div>
+                        <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+
+                <!-- Economy -->
+                <div class="modal fade" id="economy" tabindex="-1" aria-labelledby="economyModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title" id="economyModalLabel">Economy</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        </div>
+                        <div class="modal-body">
+                        ...
+                        </div>
+                        <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+
+                <!-- Demographics -->
+                <div class="modal fade" id="demographics" tabindex="-1" aria-labelledby="demographicsModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title" id="demographicsModalLabel">Demographics</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        </div>
+                        <div class="modal-body">
+                        ...
+                        </div>
+                        <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+
+                <!-- Climate -->
+                <div class="modal fade" id="climate" tabindex="-1" aria-labelledby="climateModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title" id="climateModalLabel">Climate</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        </div>
+                        <div class="modal-body">
+                        ...
+                        </div>
+                        <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+
+                <!-- Education -->
+                <div class="modal fade" id="education" tabindex="-1" aria-labelledby="educationModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title" id="educationModalLabel">Education</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        </div>
+                        <div class="modal-body">
+                        ...
+                        </div>
+                        <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+
+                <!-- Timezones -->
+                <div class="modal fade" id="timezones" tabindex="-1" aria-labelledby="timezonesModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title" id="timezonesModalLabel">Timezones</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        </div>
+                        <div class="modal-body">
+                        ...
+                        </div>
+                        <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+
+                <!-- Geography -->
+                <div class="modal fade" id="geography" tabindex="-1" aria-labelledby="geographyModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title" id="geographyModalLabel">Geography</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        </div>
+                        <div class="modal-body">
+                        ...
+                        </div>
+                        <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+
+                <!-- Health -->
+                <div class="modal fade" id="health" tabindex="-1" aria-labelledby="healthModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title" id="healthModalLabel">Health</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        </div>
+                        <div class="modal-body">
+                        ...
+                        </div>
+                        <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /modals -->
+
         </div>
 
-        <div class="row mb-3">
-            <div class="d-none d-md-block mt-4">
-                <p>Britain's American colonies broke with the mother country in 1776 and were recognized as the new nation of the United States of America following the Treaty of Paris in 1783. During the 19th and 20th centuries, 37 new states were added to the original 13 as the nation expanded across the North American continent and acquired a number of overseas possessions. The two most traumatic experiences in the nation's history were the Civil War (1861-65), in which a northern Union of states defeated a secessionist Confederacy of 11 southern slave states, and the Great Depression of the 1930s, an economic downturn during which about a quarter of the labor force lost its jobs. Buoyed by victories in World Wars I and II and the end of the Cold War in 1991, the US remains the world's most powerful nation state. Since the end of World War II, the economy has achieved relatively steady growth, low unemployment and inflation, and rapid advances in technology.</p>
-            </div>
-            
-        </div>
+    </main>
 
-        <div class="row justify-content-around">
-            <!-- Modal Trigger Buttons -->
-            <button type="button" class="btn btn-primary mr-sm-3 my-2 d-md-none col-sm-4" data-toggle="modal" data-target="#background">
-                <i class="fas fa-chart-line mr-2"></i>Background
-            </button>
-
-            <button type="button" class="btn btn-primary mr-sm-3 my-2 col-12 col-sm-4 col-lg-3" data-toggle="modal" data-target="#economy">
-                <i class="fas fa-chart-line mr-2"></i>Economy
-            </button>
-            
-            <button type="button" class="btn btn-primary mr-sm-3 my-2 col-12 col-sm-4 col-lg-3" data-toggle="modal" data-target="#demographics">
-                <i class="fas fa-users mr-2"></i>Demographics
-            </button>
-
-            <button type="button" class="btn btn-primary mr-sm-3 my-2 col-12 col-sm-4 col-lg-3" data-toggle="modal" data-target="#climate">
-                <i class="fas fa-cloud mr-2"></i>Climate
-            </button>
-
-            <button type="button" class="btn btn-primary mr-sm-3 my-2 col-12 col-sm-4 col-lg-3" data-toggle="modal" data-target="#education">
-                <i class="fas fa-book-open mr-2"></i>Education
-            </button>
-
-            <button type="button" class="btn btn-primary mr-sm-3 my-2 col-12 col-sm-4 col-lg-3" data-toggle="modal" data-target="#geography">
-                <i class="fas fa-mountain mr-2"></i>Geography
-            </button>
-
-            <button type="button" class="btn btn-primary mr-sm-3 my-2 col-12 col-sm-4 col-lg-3" data-toggle="modal" data-target="#timezones">
-                <i class="fas fa-clock mr-2"></i>Timezones
-            </button>
-
-            <button type="button" class="btn btn-primary mr-sm-3 my-2 col-12 col-sm-4 col-lg-3" data-toggle="modal" data-target="#health">
-                <i class="fas fa-heartbeat mr-2"></i>Health
-            </button>
-
-
-            <!-- Modals -->
-            <!-- Background -->
-            <div class="modal fade" id="background" tabindex="-1" aria-labelledby="backgroundModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                <div class="modal-content">
-                    <div class="modal-header">
-                    <h5 class="modal-title" id="backgroundModalLabel">Background</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    </div>
-                    <div class="modal-body">
-                    ...
-                    </div>
-                    <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    </div>
-                </div>
-                </div>
-            </div>
-
-            <!-- Economy -->
-            <div class="modal fade" id="economy" tabindex="-1" aria-labelledby="economyModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                <div class="modal-content">
-                    <div class="modal-header">
-                    <h5 class="modal-title" id="economyModalLabel">Economy</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    </div>
-                    <div class="modal-body">
-                    ...
-                    </div>
-                    <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    </div>
-                </div>
-                </div>
-            </div>
-
-            <!-- Demographics -->
-            <div class="modal fade" id="demographics" tabindex="-1" aria-labelledby="demographicsModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                <div class="modal-content">
-                    <div class="modal-header">
-                    <h5 class="modal-title" id="demographicsModalLabel">Demographics</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    </div>
-                    <div class="modal-body">
-                    ...
-                    </div>
-                    <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    </div>
-                </div>
-                </div>
-            </div>
-
-            <!-- Climate -->
-            <div class="modal fade" id="climate" tabindex="-1" aria-labelledby="climateModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                <div class="modal-content">
-                    <div class="modal-header">
-                    <h5 class="modal-title" id="climateModalLabel">Climate</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    </div>
-                    <div class="modal-body">
-                    ...
-                    </div>
-                    <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    </div>
-                </div>
-                </div>
-            </div>
-
-            <!-- Education -->
-            <div class="modal fade" id="education" tabindex="-1" aria-labelledby="educationModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                <div class="modal-content">
-                    <div class="modal-header">
-                    <h5 class="modal-title" id="educationModalLabel">Education</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    </div>
-                    <div class="modal-body">
-                    ...
-                    </div>
-                    <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    </div>
-                </div>
-                </div>
-            </div>
-
-            <!-- Timezones -->
-            <div class="modal fade" id="timezones" tabindex="-1" aria-labelledby="timezonesModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                <div class="modal-content">
-                    <div class="modal-header">
-                    <h5 class="modal-title" id="timezonesModalLabel">Timezones</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    </div>
-                    <div class="modal-body">
-                    ...
-                    </div>
-                    <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    </div>
-                </div>
-                </div>
-            </div>
-
-            <!-- Geography -->
-            <div class="modal fade" id="geography" tabindex="-1" aria-labelledby="geographyModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                <div class="modal-content">
-                    <div class="modal-header">
-                    <h5 class="modal-title" id="geographyModalLabel">Geography</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    </div>
-                    <div class="modal-body">
-                    ...
-                    </div>
-                    <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    </div>
-                </div>
-                </div>
-            </div>
-
-            <!-- Health -->
-            <div class="modal fade" id="health" tabindex="-1" aria-labelledby="healthModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                <div class="modal-content">
-                    <div class="modal-header">
-                    <h5 class="modal-title" id="healthModalLabel">Health</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    </div>
-                    <div class="modal-body">
-                    ...
-                    </div>
-                    <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    </div>
-                </div>
-                </div>
-            </div>
-        </div>
-        <!-- /modals -->
-
-    </div>
-
-</main>
-
-<!-- Footer -->
-
-
-
+    <!-- Footer -->
+    <hr>
     <footer class="footer">
         <div class="container">
-          <span class="text-muted">
+            <span class="text-muted">
             <div class="footer-copyright text-center py-3">The veracity of info on this page cannot be guaranteed. © 2020 Copyright:
                 <a href="https://www.robbmdev.com/"> Robbmdev</a>
-              </div>
-          </span>
+                </div>
+            </span>
         </div>
     </footer>
 
-    
+        
 
-<script src="/static/js/jquery-3.5.1.js"></script>
-<script src="/static/js/bootstrap.js"></script>
-<script src="/static/js/script.js"></script>
+    <script src="/static/js/jquery-3.5.1.js"></script>
+    <script src="/static/js/bootstrap.js"></script>
+    <script src="/static/js/script.js"></script>
+</body>
 
 </html>
