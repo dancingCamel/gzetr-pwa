@@ -6,7 +6,12 @@ $(document).ready(function(){
         id: 'mapbox/streets-v11',
         tileSize: 512,
         zoomOffset: -1,
+        // save this key to env vars. already refreshed token
         accessToken: 'pk.eyJ1IjoiZGFuY2luZ2NhbWVsIiwiYSI6ImNrZWFqbTZtNjAxOHcyem5yNDl2bTI4NHUifQ.6NM95gEke5TS2wEGOT8zDw'
     }).addTo(mymap);
+})
+
+$('#searchBtn').click(function(){
+    alert('clicked');
 })
 
