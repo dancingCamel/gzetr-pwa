@@ -6,6 +6,7 @@
 
     include('restcountries.php');
     include('geocoder.php');
+    include('climatedata.php');
 
     // accept country as parameter from request and save as variable
     $country = $_REQUEST['country'];
@@ -38,7 +39,13 @@
     }
 
     // use rest country to search climate data api static method
-
+    $climate_result = ClimateData::getClimateData($oc_decode['geometry']['lat'], $oc_decode['geometry']['lng']);
+    $climate_decode = json_decode($climate_result,true);
+    $output = handleErrorIfExists($climate_decode);
+    if ($output){
+        goto end;
+    }
+    
     // use opencage country name response to search factbook static method
 
     // echo response to user
@@ -59,6 +66,8 @@
     // raw outputs for development
     $output['rc'] = $rc_decode;
     $output['oc'] = $oc_decode;
+    $output['clim'] = $climate_decode;
+
 
     end:
     header('Content-Type: application/json; charset=UTF-8');
@@ -67,6 +76,11 @@
     function handleErrorIfExists($object){
         if (array_key_exists('status', $object)){
             $output['status']['code'] = $object['status'];
+            $output['status']['name'] = "error";
+            $output['message'] = $object['message'];
+            return $output;
+        } else if (array_key_exists('errorCode', $object)){
+            $output['status']['code'] = $object['errorCode'];
             $output['status']['name'] = "error";
             $output['message'] = $object['message'];
             return $output;

@@ -1,46 +1,39 @@
 <?php
-// NEED TO SEARCH FOR CLIMATE DATA FOR CAPITAL CITY!!!
-// NEED TO FIND NEW API
-// https://www.getambee.com/api/weather
-// https://opendata.stackexchange.com/questions/4242/historical-weather-data
-// https://weatherstack.com/documentation
-
-
-    class ClimateData
+class ClimateData
     {
-        public static function getTemp($country){
-            $base_url = "";
-            $query = $base_url . $country;
+        public static function getClimateData($lat,$long){
             $ch = curl_init();
-            $options = [
-                CURLOPT_URL => $query,
+            // set breakby =self?
+            $key = getenv ( 'VISCROSS_APIKEY', $local_only = TRUE );
+            $url = "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/weatherdata/historysummary?aggregateHours=24&combinationMethod=aggregate&collectStationContributions=false&maxStations=3&maxDistance=-1&minYear=2016&maxYear=2020&chronoUnit=months&breakBy=years&dailySummaries=false&contentType=json&unitGroup=uk&locationMode=single&key=$key&locations=$lat%2C%20$long";
+            curl_setopt_array($ch, array(
+                CURLOPT_URL => $url,
+                CURLOPT_MAXREDIRS => 10,
+                CURLOPT_TIMEOUT => 30,
+                CURLOPT_CUSTOMREQUEST => "GET",
                 CURLOPT_RETURNTRANSFER => 1,
                 CURLOPT_SSL_VERIFYPEER => false,
                 CURLOPT_SSL_VERIFYHOST => false
-            ];
-            curl_setopt_array($ch, $options);
+            ));
 
             $ret = curl_exec($ch);
+            $err = curl_error($ch);
 
-            return $ret;
+            curl_close($ch);
+
+            if ($err) {
+                return $err;
+            } else {
+                return $ret;
+            }
         }
 
-        public static function getPrecip($country){
-            $base_url = "";
-            $query = $base_url . $country;
-            $ch = curl_init();
-            $options = [
-                CURLOPT_URL => $query,
-                CURLOPT_RETURNTRANSFER => 1,
-                CURLOPT_SSL_VERIFYPEER => false,
-                CURLOPT_SSL_VERIFYHOST => false
-            ];
-            curl_setopt_array($ch, $options);
+        public static function formatData($raw){
+            $formatted;
 
-            $ret = curl_exec($ch);
-
-            return $ret;
+            return $formatted;
         }
+
     }
 
 ?>
