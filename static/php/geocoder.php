@@ -16,8 +16,8 @@
 			$result = $geocoder->geocode($name,['language'=>"en"]);
 
 			if (in_array($result['status']['code'], [401,402,403,429])){
-				$output['status']['code'] = $result['status']['code'];
-				$output['status']['name'] = "error";
+				$output['code'] = $result['status']['code'];
+				$output['name'] = "error";
 				$output['message'] = $result['status']['message'];
 				
 				return json_encode($output, JSON_UNESCAPED_UNICODE);
@@ -34,8 +34,16 @@
 			// $searchResult['currency']['code'] = $entry['annotations']['currency']['iso_code'];
 			// $searchResult['currency']['name'] = $entry['annotations']['currency']['name'];
 			// $searchResult['currency']['symbol'] = $entry['annotations']['currency']['symbol'];
+			try{
+				$output = $result['results'][0];
+			}
+			catch (exception $e){
+				$output['code'] = 500;
+				$output['name'] = "error";
+				$output['message'] = "Something went wrong reading the opencage data.";
+			}
 
-			return json_encode($result['results'][0], JSON_UNESCAPED_UNICODE);
+			return json_encode($output, JSON_UNESCAPED_UNICODE);
 		}
 	}
 
