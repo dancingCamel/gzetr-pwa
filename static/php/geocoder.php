@@ -45,6 +45,14 @@
 
 			return json_encode($output, JSON_UNESCAPED_UNICODE);
 		}
+
+		public static function formatOcData($data){
+			// Opencage : currency
+			$output['currencyName'] = $data['annotations']['currency']['name'];
+			$output['currencySymbol'] = $data['annotations']['currency']['symbol'];
+
+			return $output;
+		}
 	}
 
 ?>

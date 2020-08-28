@@ -37,6 +37,21 @@
 
             return $ret;
         }
+
+        public static function formatRcData($data){
+            // rest_countries : flag, capital, area, population, languages, tld, calling code, timezones
+            $output['name'] = $data['name'];
+            $output['flag'] = $data['flag'];
+            $output['capital'] = $data['capital'];
+            $output['area'] = $data['area'];
+            $output['population'] = $data['population'];
+            $output['languages'] = $data['languages'];
+            $output['tld'] = $data['topLevelDomain'];
+            $output['callingCodes'] = $data['callingCodes'];
+            $output['timezones'] = $data['timezones'];
+
+            return $output;
+        }
     }
 
 ?>
