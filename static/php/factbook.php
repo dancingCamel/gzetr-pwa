@@ -80,7 +80,7 @@
             // education
             // $output['eduExpenditure']= $data->people->education_expenditures;
             // $output['literacy'] = $data->people->literacy->total_population;
-            $output['yearsInSchool'] = $data->people->school_life_expectancy->total;
+            // $output['yearsInSchool'] = $data->people->school_life_expectancy->total;
 
             // geography
             $output['highestPoint'] = $data->geography->elevation->highest_point;

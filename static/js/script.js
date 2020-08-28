@@ -16,8 +16,18 @@ $(document).ready(function () {
   ).addTo(mymap);
 });
 
-$("#searchBtn").click(function () {
-    let country = $('#searchBox').val();
-    var data = await fetch('../php/main.php?country=' + country);
-    console.log(data);
+$("#searchBtn").click(async function () {
+  let country = $("#searchBox").val();
+  data = await getData(country);
+  populatePage(data);
 });
+
+async function getData(country) {
+  let response = await fetch("../../static/php/main.php?country=" + country);
+  let data = await response.json();
+  return data;
+}
+
+function populatePage(data) {
+  console.log(data);
+}
