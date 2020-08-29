@@ -57,8 +57,8 @@
                     <div class="container">
                         <div class="row justify-content-between">
                             <div class="col-xs-4">
-                                <h3>United States</h3>
-                                <h34 class="text-muted">America / American</h4>
+                                <h3 id="countryName">United States</h3>
+                                <h34 class="text-muted"><span id="noun">America</span> / <span id="adj">American</span></h4>
                             </div>
                             <div class="col-xs-4">
                                 <img src="https://via.placeholder.com/130x75.png?text=Flag" alt="flag">
@@ -71,7 +71,7 @@
                             <div class="mr-4">
                                 Capital City:
                             </div>
-                            <div class="">
+                            <div class="" id="capital">
                                 Washington D.C.
                             </div>
                         </div>
@@ -81,7 +81,7 @@
                                 Area:
                             </div>
                             <div class="">
-                                5830853085038053m2
+                                <span id="area"></span>m<sup>2</sup>
                             </div>
                         </div>
 
@@ -89,7 +89,7 @@
                             <div class="mr-4">
                                 Population:
                             </div>
-                            <div class="">
+                            <div class="" id="population">
                                 316,000,000
                             </div>
                         </div>
@@ -98,7 +98,7 @@
                             <div class="mr-4">
                                 GDP
                             </div>
-                            <div class="">
+                            <div class="" id="gdp">
                                 $6 trillion
                             </div>
                         </div>
@@ -107,7 +107,7 @@
                             <div class="mr-4">
                                 GDP/Capita
                             </div>
-                            <div class="">
+                            <div class="" id="gdpCapita">
                                 $42,000
                             </div>
                         </div>
@@ -116,7 +116,7 @@
                             <div class="mr-4">
                                 Main Language:
                             </div>
-                            <div class="">
+                            <div class="" id="mainLang">
                                 English
                             </div>
                         </div>
@@ -126,7 +126,7 @@
                             <div class="mr-4">
                                 TLD:
                             </div>
-                            <div class="">
+                            <div class="" id="tld">
                                 .com
                             </div>
                         </div>
@@ -137,7 +137,7 @@
                                 Calling Code:
                             </div>
                             <div class="">
-                                +1
+                                <span id="callingCode">+1</span>
                             </div>
                         </div>
 
@@ -147,7 +147,7 @@
                                 Currency:
                             </div>
                             <div class="">
-                                $ (Dollar)
+                                <span id="currencySymbol">$</span> (<span id="currencyName">Dollar</span>)
                             </div>
                         </div>
 
@@ -156,7 +156,7 @@
                                 Wikipedia:
                             </div>
                             <div class="">
-                                <a href="https://wikipedia.com">United States</a>
+                                <a href="https://wikipedia.com" id="wikiLink">United States</a>
                             </div>
                         </div>
                     </div>
@@ -166,7 +166,7 @@
 
             <div class="row mb-3">
                 <div class="d-none d-md-block mt-4">
-                    <p>Britain's American colonies broke with the mother country in 1776 and were recognized as the new nation of the United States of America following the Treaty of Paris in 1783. During the 19th and 20th centuries, 37 new states were added to the original 13 as the nation expanded across the North American continent and acquired a number of overseas possessions. The two most traumatic experiences in the nation's history were the Civil War (1861-65), in which a northern Union of states defeated a secessionist Confederacy of 11 southern slave states, and the Great Depression of the 1930s, an economic downturn during which about a quarter of the labor force lost its jobs. Buoyed by victories in World Wars I and II and the end of the Cold War in 1991, the US remains the world's most powerful nation state. Since the end of World War II, the economy has achieved relatively steady growth, low unemployment and inflation, and rapid advances in technology.</p>
+                    <p id="backgroundBlock">Britain's American colonies broke with the mother country in 1776 and were recognized as the new nation of the United States of America following the Treaty of Paris in 1783. During the 19th and 20th centuries, 37 new states were added to the original 13 as the nation expanded across the North American continent and acquired a number of overseas possessions. The two most traumatic experiences in the nation's history were the Civil War (1861-65), in which a northern Union of states defeated a secessionist Confederacy of 11 southern slave states, and the Great Depression of the 1930s, an economic downturn during which about a quarter of the labor force lost its jobs. Buoyed by victories in World Wars I and II and the end of the Cold War in 1991, the US remains the world's most powerful nation state. Since the end of World War II, the economy has achieved relatively steady growth, low unemployment and inflation, and rapid advances in technology.</p>
                 </div>
                 
             </div>
@@ -218,7 +218,7 @@
                         </button>
                         </div>
                         <div class="modal-body">
-                        ...
+                            <p id="backgroundModal">Some large paragraph</p>
                         </div>
                         <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -389,6 +389,7 @@
 
     <script src="/static/js/jquery-3.5.1.js"></script>
     <script src="/static/js/bootstrap.js"></script>
+    <script src="/static/js/keys.js"></script>
     <script src="/static/js/script.js"></script>
 </body>
 

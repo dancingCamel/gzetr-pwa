@@ -1,10 +1,12 @@
 <?php
+// Use visual crossing api
+// https://www.visualcrossing.com/resources/documentation/weather-api/weather-api-documentation/#historysummary
 class ClimateData
     {
         public static function getClimateData($lat,$long){
             $ch = curl_init();
-            // set breakby =self?
             $key = getenv ( 'VISCROSS_APIKEY', $local_only = TRUE );
+            // change max distance to 100000 to allow iran to have weather station? (50000 is default)
             $url = "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/weatherdata/historysummary?aggregateHours=24&combinationMethod=aggregate&collectStationContributions=false&maxStations=3&maxDistance=-1&minYear=2015&maxYear=2019&chronoUnit=months&breakBy=years&dailySummaries=false&contentType=json&unitGroup=uk&locationMode=single&key=$key&locations=$lat%2C%20$long";
             curl_setopt_array($ch, array(
                 CURLOPT_URL => $url,
@@ -31,22 +33,22 @@ class ClimateData
         public static function formatClimateData($raw){
             $months = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'];
 
-            // foreach($months as $month){
-            //     ${$month} = array('precip'=>[], 'temp'=>[]);
-            // }
+            foreach($months as $month){
+                ${$month} = array('precip'=>[], 'temp'=>[]);
+            }
 
-            $jan = array('precip'=>[], 'temp'=>[]);
-            $feb = array('precip'=>[], 'temp'=>[]);
-            $mar = array('precip'=>[], 'temp'=>[]);
-            $apr = array('precip'=>[], 'temp'=>[]);
-            $may = array('precip'=>[], 'temp'=>[]);
-            $jun = array('precip'=>[], 'temp'=>[]);
-            $jul = array('precip'=>[], 'temp'=>[]);
-            $aug = array('precip'=>[], 'temp'=>[]);
-            $sep = array('precip'=>[], 'temp'=>[]);
-            $oct = array('precip'=>[], 'temp'=>[]);
-            $nov = array('precip'=>[], 'temp'=>[]);
-            $dec = array('precip'=>[], 'temp'=>[]);
+            // $jan = array('precip'=>[], 'temp'=>[]);
+            // $feb = array('precip'=>[], 'temp'=>[]);
+            // $mar = array('precip'=>[], 'temp'=>[]);
+            // $apr = array('precip'=>[], 'temp'=>[]);
+            // $may = array('precip'=>[], 'temp'=>[]);
+            // $jun = array('precip'=>[], 'temp'=>[]);
+            // $jul = array('precip'=>[], 'temp'=>[]);
+            // $aug = array('precip'=>[], 'temp'=>[]);
+            // $sep = array('precip'=>[], 'temp'=>[]);
+            // $oct = array('precip'=>[], 'temp'=>[]);
+            // $nov = array('precip'=>[], 'temp'=>[]);
+            // $dec = array('precip'=>[], 'temp'=>[]);
 
             foreach($raw['location']['values'] as $value){
                 $monthArray = explode(" ", $value['period']);

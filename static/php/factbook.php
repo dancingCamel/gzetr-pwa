@@ -81,7 +81,7 @@
             $output['eduExpenditure']= checkExists($data->people,'education_expenditures');
             $output['eduExpenditure']= checkExists($data->people, 'education_expenditures');
             $output['literacy'] = checkExists(checkExists($data->people,'literacy'),'total_population');
-            $output['yearsInSchool'] = checkExists($data->people->school_life_expectancy,'total');
+            $output['yearsInSchool'] = checkExists(checkExists($data->people,'school_life_expectancy'),'total');
 
             // geography
             $output['highestPoint'] = checkExists($data->geography->elevation,'highest_point');
