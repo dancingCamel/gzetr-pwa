@@ -56,8 +56,6 @@ class ClimateData
                 array_push(${$month}['temp'], $value['temp']);
             }
 
-            
-
             foreach($months as $month){
                 // average precip
                 ${$month}['precip'] = array_filter(${$month}['precip']);

@@ -43,56 +43,62 @@
         public static function formatFbData($data){
             
             // overview
-            $output['background'] = $data->introduction->background;
-            $output['noun'] = $data->people->nationality->noun;
-            $output['adj'] = $data->people->nationality->adjective;
+            $output['background'] = checkExists($data->introduction,'background');
+            $output['noun'] = checkExists($data->people->nationality,'noun');
+            $output['adj'] = checkExists($data->people->nationality,'adjective');
 
             // economy
-            $output['gdpLatest'] = $data->economy->gdp->purchasing_power_parity->annual_values[0]->value;
-            $output['gdp'] = $data->economy->gdp->purchasing_power_parity->annual_values;
-            $output['capitaLatest'] = $data->economy->gdp->per_capita_purchasing_power_parity->annual_values[0]->value;
-            $output['capita'] = $data->economy->gdp->per_capita_purchasing_power_parity->annual_values;
-            $output['growth'] = $data->economy->gdp->real_growth_rate->annual_values[0];
-            $output['unemployment'] = $data->economy->unemployment_rate->annual_values[0];
-            $output['inflation'] = $data->economy->inflation_rate->annual_values[0];
-            $output['exports'] = $data->economy->exports->total_value->annual_values[0];
-            $output['imports'] = $data->economy->imports->total_value->annual_values[0];
-            $output['econOverview'] = $data->economy->overview;
+            $output['gdpLatest'] = checkExists($data->economy->gdp->purchasing_power_parity->annual_values[0],'value');
+            $output['gdp'] = checkExists($data->economy->gdp->purchasing_power_parity,'annual_values');
+            $output['capitaLatest'] = checkExists($data->economy->gdp->per_capita_purchasing_power_parity->annual_values[0],'value');
+            $output['capita'] = checkExists($data->economy->gdp->per_capita_purchasing_power_parity, 'annual_values');
+            $output['growth'] = checkExists($data->economy->gdp->real_growth_rate,'annual_values')[0];
+            $output['unemployment'] = checkExists($data->economy->unemployment_rate,'annual_values')[0];
+            $output['inflation'] = checkExists($data->economy->inflation_rate,'annual_values')[0];
+            $output['exports'] = checkExists($data->economy->exports->total_value,'annual_values')[0];
+            $output['imports'] = checkExists($data->economy->imports->total_value,'annual_values')[0];
+            $output['econOverview'] = checkExists($data->economy,'overview');
 
             // demographics
-            $output['ethnicity'] = $data->people->ethnic_groups->ethnicity;
-            $output['languages'] = $data->people->languages->language;
-            $output['religions'] = $data->people->religions->religion;
-            $output['ages'] = $data->people->age_structure;
-            $output['popGrowth'] = $data->people->population_growth_rate;
-            $output['birthRate'] = $data->people->birth_rate;
-            $output['deathRate'] = $data->people->death_rate;
-            $output['infantMortality'] = $data->people->infant_mortality_rate->total;
-            $output['lifeExpectancy'] = $data->people->life_expectancy_at_birth->total_population;
-            $output['fertility'] = $data->people->total_fertility_rate;
+            $output['ethnicity'] = checkExists($data->people->ethnic_groups,'ethnicity');
+            $output['languages'] = checkExists($data->people->languages,'language');
+            $output['religions'] = checkExists($data->people->religions,'religion');
+            $output['ages'] = checkExists($data->people,'age_structure');
+            $output['popGrowth'] = checkExists($data->people,'population_growth_rate');
+            $output['birthRate'] = checkExists($data->people,'birth_rate');
+            $output['deathRate'] = checkExists($data->people,'death_rate');
+            $output['infantMortality'] = checkExists($data->people->infant_mortality_rate,'total');
+            $output['lifeExpectancy'] = checkExists($data->people->life_expectancy_at_birth,'total_population');
+            $output['fertility'] = checkExists($data->people,'total_fertility_rate');
 
             // health
-            $output['cleanWater'] = $data->people->drinking_water_source->improved->total;
-            $output['sanitation'] = $data->people->sanitation_facility_access->improved->total;
-            // $output['hiv'] = $data->people->hiv_aids->adult_prevalence_rate;
-            $output['obesity'] = $data->people->adult_obesity;
+            $output['cleanWater'] = checkExists($data->people->drinking_water_source->improved,'total');
+            $output['sanitation'] = checkExists($data->people->sanitation_facility_access->improved,'total');
+            $output['hiv'] = checkExists(checkExists($data->people,'hiv_aids'),'adult_prevalence_rate');
+            $output['obesity'] = checkExists($data->people,'adult_obesity');
 
             // education
-            // $output['eduExpenditure']= $data->people->education_expenditures;
-            // $output['literacy'] = $data->people->literacy->total_population;
-            // $output['yearsInSchool'] = $data->people->school_life_expectancy->total;
+            $output['eduExpenditure']= checkExists($data->people,'education_expenditures');
+            $output['eduExpenditure']= checkExists($data->people, 'education_expenditures');
+            $output['literacy'] = checkExists(checkExists($data->people,'literacy'),'total_population');
+            $output['yearsInSchool'] = checkExists($data->people->school_life_expectancy,'total');
 
             // geography
-            $output['highestPoint'] = $data->geography->elevation->highest_point;
-            $output['lowestPoint'] = $data->geography->elevation->lowest_point;
-            $output['naturalResources'] = $data->geography->natural_resources->resources;
-            $output['naturalHazards'] = $data->geography->natural_hazards;
-            $output['climateOverview'] = $data->geography->climate;
+            $output['highestPoint'] = checkExists($data->geography->elevation,'highest_point');
+            $output['lowestPoint'] = checkExists($data->geography->elevation,'lowest_point');
+            $output['naturalResources'] = checkExists($data->geography->natural_resources,'resources');
+            $output['naturalHazards'] = checkExists($data->geography,'natural_hazards');
+            $output['climateOverview'] = checkExists($data->geography,'climate');
 
             return $output;
         }
     }
 
-    // TODO: Add function to check if the data exists. if not, omit it from data. then can add missing data
-
+    // helper functions
+    function checkExists($parent, $element){
+        if (property_exists($parent, $element)){
+            return $parent->$element;
+        }
+        return "No Data";
+    }
 ?> 
