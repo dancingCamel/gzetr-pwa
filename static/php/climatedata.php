@@ -28,10 +28,63 @@ class ClimateData
             }
         }
 
-        public static function formatData($raw){
-            $formatted;
+        public static function formatClimateData($raw){
+            $months = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'];
 
-            return $formatted;
+            // foreach($months as $month){
+            //     ${$month} = array('precip'=>[], 'temp'=>[]);
+            // }
+
+            $jan = array('precip'=>[], 'temp'=>[]);
+            $feb = array('precip'=>[], 'temp'=>[]);
+            $mar = array('precip'=>[], 'temp'=>[]);
+            $apr = array('precip'=>[], 'temp'=>[]);
+            $may = array('precip'=>[], 'temp'=>[]);
+            $jun = array('precip'=>[], 'temp'=>[]);
+            $jul = array('precip'=>[], 'temp'=>[]);
+            $aug = array('precip'=>[], 'temp'=>[]);
+            $sep = array('precip'=>[], 'temp'=>[]);
+            $oct = array('precip'=>[], 'temp'=>[]);
+            $nov = array('precip'=>[], 'temp'=>[]);
+            $dec = array('precip'=>[], 'temp'=>[]);
+
+            foreach($raw['location']['values'] as $value){
+                $monthArray = explode(" ", $value['period']);
+                $month = strtolower($monthArray[0]);
+                
+                array_push(${$month}['precip'], $value['precip']);
+                array_push(${$month}['temp'], $value['temp']);
+            }
+
+            
+
+            foreach($months as $month){
+                // average precip
+                ${$month}['precip'] = array_filter(${$month}['precip']);
+                if(count(${$month}['precip'])) {
+                    ${$month}['precip'] = array_sum(${$month}['precip'])/count(${$month}['precip']);
+                }
+                // average temp
+                ${$month}['temp'] = array_filter(${$month}['temp']);
+                if(count(${$month}['temp'])) {
+                    ${$month}['temp'] = array_sum(${$month}['temp'])/count(${$month}['temp']);
+                }
+            }
+
+            $output['january'] = $jan;
+            $output['february'] = $feb;
+            $output['march'] = $mar;
+            $output['april'] = $apr;
+            $output['may'] = $may;
+            $output['june'] = $jun;
+            $output['july'] = $jul;
+            $output['august'] = $aug;
+            $output['september'] = $sep;
+            $output['october'] = $oct;
+            $output['november'] = $nov;
+            $output['december'] = $dec;
+
+            return $output;
         }
 
     }

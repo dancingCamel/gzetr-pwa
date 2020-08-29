@@ -40,12 +40,12 @@
     }
 
     // use rest country to search climate data api static method
-    // $climate_result = ClimateData::getClimateData($oc_decode['geometry']['lat'], $oc_decode['geometry']['lng']);
-    // $climate_decode = json_decode($climate_result,true);
-    // $output = handleErrorIfExists($climate_decode);
-    // if ($output){
-    //     goto end;
-    // }
+    $climate_result = ClimateData::getClimateData($oc_decode['geometry']['lat'], $oc_decode['geometry']['lng']);
+    $climate_decode = json_decode($climate_result,true);
+    $output = handleErrorIfExists($climate_decode);
+    if ($output){
+        goto end;
+    }
 
     // use opencage country name response to search factbook static method
     $fb_decode = Factbook::getDataByCountry($oc_decode['components']['country']);
@@ -56,7 +56,7 @@
     
     $output['rc'] = RestCountries::formatRcData($rc_decode);
     $output['oc'] = Geolocation::formatOcData($oc_decode);
-    // $output['clim'] = $climate_decode;
+    $output['clim'] = ClimateData::formatClimateData($climate_decode);
     $output['fb'] = Factbook::formatFbData($fb_decode);
 
     end:
