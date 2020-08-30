@@ -95,8 +95,7 @@ class Map {
       this.map.removeLayer(this.outlineCountry);
     }
 
-    //draw the ouline using leaflets built in feature method
-
+    //draw the outline using leaflets built in feature method
     this.outlineCountry = L.geoJSON(this.outlineFeature).addTo(this.map);
     this.fitBounds();
   }

@@ -8,6 +8,7 @@
     include('geocoder.php');
     include('climatedata.php');
     include('factbook.php');
+    include('geo.php');
 
     // accept country as parameter from request and save as variable
     $country = $_REQUEST['country'];
@@ -56,11 +57,14 @@
     if ($output){
         goto end;
     }
+
+    $gj_decode = GeoJson::getGeoJson($rc_decode['alpha2Code']);
     
     // $output['clim'] = ClimateData::formatClimateData($climate_decode);
     $output['rc'] = RestCountries::formatRcData($rc_decode);
     $output['oc'] = Geolocation::formatOcData($oc_decode);
     $output['fb'] = Factbook::formatFbData($fb_decode);
+    $output['geo'] = $gj_decode;
 
 
     end:
