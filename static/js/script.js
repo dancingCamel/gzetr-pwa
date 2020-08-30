@@ -1,7 +1,5 @@
-$(document).ready(function () {
-  var map = new Map("mapid");
-  var geojson = {};
-});
+var map = new Map("mapid");
+var geojson = {};
 
 $("#searchBtn").click(async function () {
   let country = $("#searchBox").val();

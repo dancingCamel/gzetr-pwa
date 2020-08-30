@@ -86,6 +86,7 @@ class Map {
 
   setOutline(data) {
     this.outlineFeature = data;
+    console.log(data);
     this.drawOutline();
   }
 
