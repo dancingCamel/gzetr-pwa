@@ -3,11 +3,17 @@ html {
   min-height: 100%;
 }
 
+/* Map */
 .leaflet-fade-anim .leaflet-tile,
 .leaflet-zoom-anim .leaflet-zoom-animated {
   will-change: auto !important;
 }
 
+#mapid {
+  height: 300px;
+}
+
+/* Main page */
 #logo {
   height: 2rem;
 }
@@ -25,15 +31,40 @@ main {
   max-width: 250px;
 }
 
-#mapid {
-  height: 300px;
-}
-
 #flag {
   width: 85px;
   border: 1px solid gray;
 }
 
+/* Loader */
+.loader {
+  position: relative;
+  text-align: center;
+  margin: 15px auto 35px auto;
+  z-index: 9999;
+  display: block;
+  width: 80px;
+  height: 80px;
+  border: 10px solid rgba(0, 0, 0, 0.3);
+  border-radius: 50%;
+  border-top-color: #000;
+  animation: spin 1s ease-in-out infinite;
+  -webkit-animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes spin {
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+/* Large screen syling */
 @media screen and (min-width: 576px) {
   .navbar input[type="text"] {
     width: 200px !important;

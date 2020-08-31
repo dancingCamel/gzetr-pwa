@@ -4,14 +4,16 @@ var error = false;
 var errorMessage = "";
 
 $("#searchBtn").click(async function () {
-  // show loading modal here
+  showLoader();
+
   let country = $("#searchBox").val();
   data = await getData(country);
   populatePage(data);
 
   geojson = data["geo"];
   map.setOutline(geojson);
-  // hide loading modal here
+
+  hideLoader();
 });
 
 async function getData(country) {
@@ -60,10 +62,22 @@ function populateIntro(data) {
   $("#introModal").html(data["fb"]["background"]);
 }
 
-function populateClimate(data) {}
 function populateDemographics(data) {}
 function populateEconomy(data) {}
 function populateEducation(data) {}
 function populateGeography(data) {}
 function populateHealth(data) {}
 function populateTimezones(data) {}
+function populateClimate(data) {}
+
+function showLoader() {
+  $("#loader").modal({
+    backdrop: "static", //remove ability to close modal with click
+    keyboard: false, //remove option to close with keyboard
+    show: true, //Display loader!
+  });
+}
+
+function hideLoader() {
+  $("#loader").modal("hide");
+}
