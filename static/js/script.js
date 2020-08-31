@@ -45,7 +45,12 @@ function populatePrimary(data) {
   $("#population").html(data["rc"]["population"].toLocaleString());
   $("#gdp").html(data["fb"]["gdpLatest"].toLocaleString());
   $("#gdpCapita").html(data["fb"]["capitaLatest"].toLocaleString());
-  $("#mainLang").html(data["fb"]["languages"][0]["name"]);
+
+  let languages = [];
+  data["rc"]["languages"].forEach((element) => {
+    languages.push(element.name);
+  });
+  $("#mainLang").html(languages.join(", "));
   $("#tld").html(data["rc"]["tld"].join(", "));
   $("#callingCode").html(data["rc"]["callingCodes"].join(", "));
   $("#currencySymbol").html(data["oc"]["currencySymbol"]);
@@ -62,13 +67,27 @@ function populateIntro(data) {
   $("#introModal").html(data["fb"]["background"]);
 }
 
-function populateEconomy(data) {}
-function populateDemographics(data) {}
-function populateEducation(data) {}
-function populateGeography(data) {}
-function populateHealth(data) {}
-function populateTimezones(data) {}
-function populateClimate(data) {}
+function populateEconomy(data) {
+  // overview, gdp table with dates, gdp/capita table with dates, gdp growth, unemployment, imports, exports, inflation
+}
+function populateDemographics(data) {
+  // religion, ethnicity, age histogram, population growth, languages, life expectancy,
+}
+function populateEducation(data) {
+  // literacy, years in school, expenditure
+}
+function populateGeography(data) {
+  // highest point, lowest point, natural resources, natural hazards
+}
+function populateHealth(data) {
+  // fertility rate, death rate, clean water, birth rate, infant mortality, sanitation, hiv, obesity,
+}
+function populateTimezones(data) {
+  // timezones table
+}
+function populateClimate(data) {
+  // climate overview. climate data graphs (bar for temp with line for rainfall overlay)
+}
 
 function showLoader() {
   $("#loader").modal({
