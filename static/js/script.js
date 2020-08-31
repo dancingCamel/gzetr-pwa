@@ -41,10 +41,10 @@ function populatePrimary(data) {
   $("#adj").html(data["fb"]["adj"]);
   $("#flag").attr("src", data["rc"]["flag"]);
   $("#capital").html(data["rc"]["capital"]);
-  $("#area").html(data["rc"]["area"]);
-  $("#population").html(data["rc"]["population"]);
-  $("#gdp").html(data["fb"]["gdpLatest"]);
-  $("#gdpCapita").html(data["fb"]["capitaLatest"]);
+  $("#area").html(data["rc"]["area"].toLocaleString());
+  $("#population").html(data["rc"]["population"].toLocaleString());
+  $("#gdp").html(data["fb"]["gdpLatest"].toLocaleString());
+  $("#gdpCapita").html(data["fb"]["capitaLatest"].toLocaleString());
   $("#mainLang").html(data["fb"]["languages"][0]["name"]);
   $("#tld").html(data["rc"]["tld"].join(", "));
   $("#callingCode").html(data["rc"]["callingCodes"].join(", "));
@@ -62,8 +62,8 @@ function populateIntro(data) {
   $("#introModal").html(data["fb"]["background"]);
 }
 
-function populateDemographics(data) {}
 function populateEconomy(data) {}
+function populateDemographics(data) {}
 function populateEducation(data) {}
 function populateGeography(data) {}
 function populateHealth(data) {}
