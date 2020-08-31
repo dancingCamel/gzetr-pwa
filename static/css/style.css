@@ -20,11 +20,20 @@ main {
   margin-top: 90px;
 }
 
+#countryName,
+#nounAdj {
+  max-width: 250px;
+}
+
 #mapid {
   height: 300px;
 }
 
-/* Small screen settings */
+#flag {
+  width: 85px;
+  border: 1px solid gray;
+}
+
 @media screen and (min-width: 576px) {
   .navbar input[type="text"] {
     width: 200px !important;
@@ -32,5 +41,14 @@ main {
 
   main {
     margin-top: 80px !important;
+  }
+
+  #countryName,
+  #nounAdj {
+    max-width: 350px;
+  }
+
+  #flag {
+    width: 130px;
   }
 }

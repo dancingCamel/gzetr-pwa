@@ -6,8 +6,8 @@ class Map {
     //defaults london
     this.lat = 51.509865;
     this.lon = -0.118092;
-    this.zoom = 12;
-    this.maxZoom = 18;
+    this.zoom = 4;
+    this.maxZoom = 10;
     this.minZoom = 2;
 
     //outline data
@@ -18,33 +18,20 @@ class Map {
     this.baseMap;
     this.baseMapUrl =
       "https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}";
-    this.baseMapView = {
-      streets: "mapbox/streets-v11",
-    };
 
     this.baseMapOptions = {
       maxZoom: this.maxZoom,
       minZoom: this.minZoom,
-      id: this.baseMapView.streets,
+      id: "mapbox/streets-v11",
       tileSize: 512,
       zoomOffset: -1,
       accessToken: mapbox_key,
     };
 
     //set up the map
-    this.mapOptions = {
+    this.map = L.map(this.id, {
       zoomControl: true,
-      attributionControl: false,
-      maxBounds: [
-        [-90, -180],
-        [90, 180],
-      ],
-      maxBoundsViscosity: 1.0,
-    };
-    this.map = L.map(this.id, this.mapOptions).setView(
-      [this.lat, this.lon],
-      this.zoom
-    );
+    }).setView([this.lat, this.lon], this.zoom);
 
     //add our base layer
     this.baseMap = L.tileLayer(this.baseMapUrl, this.baseMapOptions).addTo(
@@ -57,36 +44,12 @@ class Map {
     });
   }
 
-  setLocation(_lat, _lon, _zoom = 0) {
-    if (_lat === undefined || _lon === undefined) {
-      console.log("You need to enter lat and lon coordinates in setLocation!");
-    }
-    this.lat = _lat;
-    this.lon = _lon;
-    if (_zoom !== 0) {
-      try {
-        this.zoom = Number(_zoom);
-      } catch (error) {
-        console.log("invalid zoom parameter in .setLocation!");
-      }
-    }
-  }
-
   setView(_lat, _lon) {
     this.map.setView([_lat, _lon]);
   }
 
-  redrawLayers() {
-    //remove base map and redraw
-    this.map.removeLayer(this.baseMap);
-    this.baseMap = L.tileLayer(this.baseMapUrl, this.baseMapOptions).addTo(
-      this.map
-    );
-  }
-
   setOutline(data) {
     this.outlineFeature = data;
-    console.log(data);
     this.drawOutline();
   }
 
@@ -96,7 +59,7 @@ class Map {
       this.map.removeLayer(this.outlineCountry);
     }
 
-    //draw the outline using leaflets built in feature method
+    //draw the outline using leaflets built-in feature method
     this.outlineCountry = L.geoJSON(this.outlineFeature).addTo(this.map);
     this.fitBounds();
   }
@@ -111,9 +74,5 @@ class Map {
 
   resetSize() {
     this.map.invalidateSize();
-  }
-
-  closePopup() {
-    this.map.closePopup();
   }
 }
