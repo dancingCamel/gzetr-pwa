@@ -64,7 +64,11 @@
     $output['rc'] = RestCountries::formatRcData($rc_decode);
     $output['oc'] = Geolocation::formatOcData($oc_decode);
     $output['fb'] = Factbook::formatFbData($fb_decode);
+    
     $output['geo'] = $gj_decode;
+
+    $output['status']['code'] = 200;
+    $output['status']['name'] = "success";
 
 
     end:
@@ -76,8 +80,7 @@
     function handleErrorIfExists($data){
         if (is_array($data)){
             if (array_key_exists('status', $data)){
-                $output['status']['code'] = $data['status'];
-                $output['status']['name'] = "error";
+                
                 $output['message'] = $data['message'];
                 return $output;
             } else if (array_key_exists('errorCode', $data)){
