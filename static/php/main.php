@@ -58,7 +58,7 @@
         goto end;
     }
 
-    $gj_decode = GeoJson::getGeoJson($rc_decode['alpha2Code']);
+    $gj_decode = GeoJson::getGeoJson($oc_decode['components']['country']);
     
     // $output['clim'] = ClimateData::formatClimateData($climate_decode);
     $output['rc'] = RestCountries::formatRcData($rc_decode);

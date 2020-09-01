@@ -1,8 +1,7 @@
 $(document).ready(function () {
   var map = new Map("mapid");
-  var geojson = {};
-  var error = false;
-  var errorMessage = "";
+  // var error = false;
+  // var errorMessage = "";
   var country;
 
   $("#searchBtn").click(async function () {
@@ -27,6 +26,33 @@ $(document).ready(function () {
       event.preventDefault();
       $("#searchBtn").trigger("click");
     }
+  });
+
+  $("#econModalBtn").click(function () {
+    country.populateEconomy();
+  });
+
+  $("#demographicsModalBtn").click(function () {
+    country.populateDemographics();
+  });
+
+  $("#climateModalBtn").click(function () {
+    country.populateClimate();
+  });
+
+  $("#educationModalBtn").click(function () {
+    country.populateEducation();
+  });
+
+  $("#geographyModalBtn").click(function () {
+    country.populateGeography();
+  });
+
+  $("#timezonesModalBtn").click(function () {
+    country.populateTimezones();
+  });
+  $("#healthModalBtn").click(function () {
+    country.populateHealth();
   });
 });
 

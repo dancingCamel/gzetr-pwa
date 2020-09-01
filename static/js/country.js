@@ -77,29 +77,36 @@ class Country {
 
   populateEconomy() {
     // overview, gdp table with dates, gdp/capita table with dates, gdp growth, unemployment, imports, exports, inflation
+    console.log("clicked economy");
   }
 
   populateDemographics() {
     // religion, ethnicity, age histogram, population growth, languages, life expectancy,
+    console.log("clicked demographics");
   }
 
   populateEducation() {
     // literacy, years in school, expenditure
+    console.log("clicked education");
   }
 
   populateGeography() {
     // highest point, lowest point, natural resources, natural hazards
+    console.log("clicked geography");
   }
 
   populateHealth() {
     // fertility rate, death rate, clean water, birth rate, infant mortality, sanitation, hiv, obesity,
+    console.log("clicked health");
   }
 
   populateTimezones() {
     // timezones table
+    console.log("clicked timezones");
   }
 
   populateClimate() {
     // climate overview. climate data graphs (bar for temp with line for rainfall overlay)
+    console.log("clicked climate");
   }
 }
