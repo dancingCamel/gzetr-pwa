@@ -1,6 +1,7 @@
 class Country {
   constructor(data) {
     // add validation to individual values here
+    // primary info
     this.countryName = data["rc"]["name"];
     this.noun = data["fb"]["noun"];
     this.adj = data["fb"]["adj"];
@@ -26,6 +27,42 @@ class Country {
     this.wikiText = data["geo"]["properties"]["NAME"];
     this.intro = data["fb"]["background"];
     this.geojson = data["geo"];
+    this.econOverview = data["fb"]["econOverview"];
+
+    // economy
+    this.gdpGrowth = formatValueAndDate(data["fb"]["growth"]);
+    this.unemployment = formatValueAndDate(data["fb"]["unemployment"]);
+    this.imports = formatValueAndDate(data["fb"]["imports"]);
+    this.exports = formatValueAndDate(data["fb"]["exports"]);
+    this.inflation = formatValueAndDate(data["fb"]["inflation"]);
+
+    this.historicalGDP = [];
+    for (var i = 0; i < data["fb"]["gdp"].length; i++) {
+      let entry = data["fb"]["gdp"][i];
+      let values = ["value", "units", "date"];
+      let temp = [];
+      values.forEach((value) => {
+        temp.push(entry[value]);
+      });
+      this.historicalGDP.push(temp);
+    }
+    this.historicalGDP.forEach((element) => {
+      element[0] = Math.round(element[0]).toLocaleString();
+    });
+
+    this.historicalCapita = [];
+    for (var i = 0; i < data["fb"]["capita"].length; i++) {
+      let entry = data["fb"]["capita"][i];
+      let values = ["value", "units", "date"];
+      let temp = [];
+      values.forEach((value) => {
+        temp.push(entry[value]);
+      });
+      this.historicalCapita.push(temp);
+    }
+    this.historicalCapita.forEach((element) => {
+      element[0] = Math.round(element[0]).toLocaleString();
+    });
 
     // keep track of which parts of page have been built
     this.populatedPrimary = false;
@@ -37,13 +74,6 @@ class Country {
     this.populatedHealth = false;
     this.populatedTimezones = false;
     this.populatedClimate = false;
-  }
-
-  static async getData(search) {
-    let response = await fetch("../../static/php/main.php?country=" + search);
-    let data = await response.json();
-    console.log(data);
-    return data;
   }
 
   populatePrimary() {
@@ -76,8 +106,35 @@ class Country {
   }
 
   populateEconomy() {
-    // overview, gdp table with dates, gdp/capita table with dates, gdp growth, unemployment, imports, exports, inflation
-    console.log("clicked economy");
+    // gdp table with dates, gdp/capita table with dates, unemployment, imports, exports, inflation
+    $("#econOverview").html(this.econOverview);
+    $("#gdpGrowth").html(this.gdpGrowth);
+    $("#unemployment").html(this.unemployment);
+    $("#inflation").html(this.inflation);
+    $("#imports").html(this.imports);
+    $("#exports").html(this.exports);
+
+    $("#historicalGDP").DataTable({
+      data: this.historicalGDP,
+      columns: [{ title: "Value" }, { title: "Units" }, { title: "Year" }],
+      paging: false,
+      info: false,
+      searching: false,
+      destroy: true,
+    });
+
+    $("#historicalGdpCapita").DataTable({
+      data: this.historicalCapita,
+      columns: [{ title: "Value" }, { title: "Units" }, { title: "Year" }],
+      paging: false,
+      info: false,
+      searching: false,
+      destroy: true,
+    });
+
+    // $("#historicalGDP").append(histGdpTable);
+
+    this.populatedEconomy = true;
   }
 
   populateDemographics() {
@@ -109,4 +166,18 @@ class Country {
     // climate overview. climate data graphs (bar for temp with line for rainfall overlay)
     console.log("clicked climate");
   }
+
+  static async getData(search) {
+    let response = await fetch("../../static/php/main.php?country=" + search);
+    let data = await response.json();
+    console.log(data);
+    return data;
+  }
+}
+
+function formatValueAndDate(data) {
+  let output = `${data["value"].toLocaleString()} ${data["units"]} (${
+    data["date"]
+  })`;
+  return output;
 }

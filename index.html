@@ -37,10 +37,16 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
     />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css"
+    />
 
-    <!-- MapBox -->
-    <!-- <script src='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js'></script>
-    <link href='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css' rel='stylesheet' /> -->
+    <!-- DataTables and jQuery -->
+    <script src="/static/js/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
   </head>
 
   <body>
@@ -310,7 +316,49 @@
                     <span aria-hidden="true">&times;</span>
                   </button>
                 </div>
-                <div class="modal-body">...</div>
+                <div class="modal-body">
+                  <div class="container mt-3">
+                    <div class="row justify-content-between">
+                      <div class="mr-4">Overview:</div>
+                      <div class="" id="econOverview"></div>
+                    </div>
+
+                    <div class="row justify-content-between mt-2">
+                      <div class="mr-4">GDP Growth:</div>
+                      <div class="" id="gdpGrowth"></div>
+                    </div>
+
+                    <div class="row justify-content-between">
+                      <div class="mr-4">Historical GDP:</div>
+                      <table id="historicalGDP"></table>
+                    </div>
+
+                    <div class="row justify-content-between">
+                      <div class="mr-4">Hist. GDP/Capita:</div>
+                      <table class="" id="historicalGdpCapita"></table>
+                    </div>
+
+                    <div class="row justify-content-between">
+                      <div class="mr-4">Inflation:</div>
+                      <div class="" id="inflation"></div>
+                    </div>
+
+                    <div class="row justify-content-between">
+                      <div class="mr-4">Unemployment</div>
+                      <div class="" id="unemployment"></div>
+                    </div>
+
+                    <div class="row justify-content-between">
+                      <div class="mr-4">Imports:</div>
+                      <div class="" id="imports"></div>
+                    </div>
+
+                    <div class="row justify-content-between">
+                      <div class="mr-4">Exports:</div>
+                      <div class="" id="exports"></div>
+                    </div>
+                  </div>
+                </div>
                 <div class="modal-footer">
                   <button
                     type="button"
@@ -596,7 +644,6 @@
       </div>
     </footer>
 
-    <script src="/static/js/jquery-3.5.1.js"></script>
     <script src="/static/js/bootstrap.js"></script>
     <script src="/static/js/keys.js"></script>
     <script src="/static/js/map.js"></script>

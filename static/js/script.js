@@ -29,30 +29,44 @@ $(document).ready(function () {
   });
 
   $("#econModalBtn").click(function () {
-    country.populateEconomy();
+    if (!country.populatedEconomy) {
+      country.populateEconomy();
+    }
   });
 
   $("#demographicsModalBtn").click(function () {
-    country.populateDemographics();
+    if (!country.populatedDemographics) {
+      country.populateDemographics();
+    }
   });
 
   $("#climateModalBtn").click(function () {
-    country.populateClimate();
+    if (!country.populatedClimate) {
+      country.populateClimate();
+    }
   });
 
   $("#educationModalBtn").click(function () {
-    country.populateEducation();
+    if (!country.populatedEducation) {
+      country.populateEducation();
+    }
   });
 
   $("#geographyModalBtn").click(function () {
-    country.populateGeography();
+    if (!country.populatedGeography) {
+      country.populateGeography();
+    }
   });
 
   $("#timezonesModalBtn").click(function () {
-    country.populateTimezones();
+    if (!country.populatedTimezones) {
+      country.populateTimezones();
+    }
   });
   $("#healthModalBtn").click(function () {
-    country.populateHealth();
+    if (!country.populatedHealth) {
+      country.populateHealth();
+    }
   });
 });
 
