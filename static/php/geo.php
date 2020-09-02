@@ -8,7 +8,7 @@ class GeoJson
         $geoJson = json_decode($rawGeoJson);
 
         foreach($geoJson->features as $feature){
-            if ($feature->properties->NAME == $country){
+            if ($feature->properties->ADM0_A3_IS == $country){
                 $output = $feature;
             break;
             }

@@ -36,33 +36,41 @@ class Country {
     this.exports = formatValueAndDate(data["fb"]["exports"]);
     this.inflation = formatValueAndDate(data["fb"]["inflation"]);
 
-    this.historicalGDP = [];
-    for (var i = 0; i < data["fb"]["gdp"].length; i++) {
-      let entry = data["fb"]["gdp"][i];
-      let values = ["value", "units", "date"];
-      let temp = [];
-      values.forEach((value) => {
-        temp.push(entry[value]);
-      });
-      this.historicalGDP.push(temp);
-    }
+    this.historicalGDP = formatTableData(data["fb"]["gdp"], [
+      "value",
+      "units",
+      "date",
+    ]);
+
     this.historicalGDP.forEach((element) => {
       element[0] = Math.round(element[0]).toLocaleString();
     });
 
-    this.historicalCapita = [];
-    for (var i = 0; i < data["fb"]["capita"].length; i++) {
-      let entry = data["fb"]["capita"][i];
-      let values = ["value", "units", "date"];
-      let temp = [];
-      values.forEach((value) => {
-        temp.push(entry[value]);
-      });
-      this.historicalCapita.push(temp);
-    }
+    this.historicalCapita = formatTableData(data["fb"]["capita"], [
+      "value",
+      "units",
+      "date",
+    ]);
     this.historicalCapita.forEach((element) => {
       element[0] = Math.round(element[0]).toLocaleString();
     });
+
+    // demographics
+    this.religions = formatTableData(data["fb"]["religions"], [
+      "name",
+      "percent",
+    ]);
+
+    this.ethnicity = formatTableData(data["fb"]["ethnicity"], [
+      "name",
+      "percent",
+    ]);
+
+    this.populationGrowth = `${data["fb"]["popGrowth"][
+      "growth_rate"
+    ].toLocaleString()} % (${data["fb"]["popGrowth"]["date"]})`;
+
+    this.languages = formatTableData(data["fb"]["languages"], ["name", "note"]);
 
     // keep track of which parts of page have been built
     this.populatedPrimary = false;
@@ -106,7 +114,6 @@ class Country {
   }
 
   populateEconomy() {
-    // gdp table with dates, gdp/capita table with dates, unemployment, imports, exports, inflation
     $("#econOverview").html(this.econOverview);
     $("#gdpGrowth").html(this.gdpGrowth);
     $("#unemployment").html(this.unemployment);
@@ -114,32 +121,33 @@ class Country {
     $("#imports").html(this.imports);
     $("#exports").html(this.exports);
 
-    $("#historicalGDP").DataTable({
-      data: this.historicalGDP,
-      columns: [{ title: "Value" }, { title: "Units" }, { title: "Year" }],
-      paging: false,
-      info: false,
-      searching: false,
-      destroy: true,
-    });
+    createTable("#historicalGDP", this.historicalGDP, [
+      "Value",
+      "Units",
+      "Year",
+    ]);
 
-    $("#historicalGdpCapita").DataTable({
-      data: this.historicalCapita,
-      columns: [{ title: "Value" }, { title: "Units" }, { title: "Year" }],
-      paging: false,
-      info: false,
-      searching: false,
-      destroy: true,
-    });
-
-    // $("#historicalGDP").append(histGdpTable);
+    createTable("#historicalGdpCapita", this.historicalCapita, [
+      "Value",
+      "Units",
+      "Year",
+    ]);
 
     this.populatedEconomy = true;
   }
 
   populateDemographics() {
-    // religion, ethnicity, age histogram, population growth, languages, life expectancy,
-    console.log("clicked demographics");
+    // age histogram, languages
+
+    createTable("#religions", this.religions, ["Religion", "Percent"]);
+
+    createTable("#ethnicity", this.ethnicity, ["Ethnicity", "Percent"]);
+
+    createTable("#languages", this.languages, ["Language", "Notes"]);
+
+    $("#populationGrowth").html(this.populationGrowth);
+
+    this.populatedDemographics = true;
   }
 
   populateEducation() {
@@ -153,7 +161,7 @@ class Country {
   }
 
   populateHealth() {
-    // fertility rate, death rate, clean water, birth rate, infant mortality, sanitation, hiv, obesity,
+    // fertility rate, death rate, clean water, birth rate, infant mortality, sanitation, hiv, obesity,life expectancy,
     console.log("clicked health");
   }
 
@@ -170,7 +178,7 @@ class Country {
   static async getData(search) {
     let response = await fetch("../../static/php/main.php?country=" + search);
     let data = await response.json();
-    console.log(data);
+
     return data;
   }
 }
@@ -180,4 +188,40 @@ function formatValueAndDate(data) {
     data["date"]
   })`;
   return output;
+}
+
+function formatTableData(data, columns) {
+  output = [];
+
+  for (var i = 0; i < data.length; i++) {
+    let entry = data[i];
+    let values = columns;
+    let temp = [];
+    values.forEach((value) => {
+      entry[value] === undefined
+        ? temp.push("No Data")
+        : temp.push(entry[value]);
+    });
+    output.push(temp);
+  }
+  return output;
+}
+
+function createTable(element, data, columns) {
+  let columnsObjects = [];
+
+  columns.forEach((column) => {
+    let temp = {};
+    temp["title"] = column;
+    columnsObjects.push(temp);
+  });
+
+  $(element).DataTable({
+    data: data,
+    columns: columnsObjects,
+    paging: false,
+    info: false,
+    searching: false,
+    destroy: true,
+  });
 }

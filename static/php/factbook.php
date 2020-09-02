@@ -14,11 +14,12 @@
                 $country = str_replace(" ", "_", $country);
                 try {
                     if (gettype($factbookJson)=="object"){
+                        // this can't find jamaica for some reason
                         if (property_exists($factbookJson->countries, $country)){
                             $ret = $factbookJson->countries->$country->data;
                         }else {
                             $ret['status'] = 404;
-                            $ret['message'] = "Country not found.";
+                            $ret['message'] = "Country not found. Doesn't Exist in Factbook";
                         }
                         
                     }
