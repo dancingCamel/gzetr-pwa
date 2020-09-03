@@ -1,3 +1,5 @@
+var myChart;
+
 $(document).ready(function () {
   var map = new Map("mapid");
   // var error = false;
@@ -63,10 +65,54 @@ $(document).ready(function () {
       country.populateTimezones();
     }
   });
+
   $("#healthModalBtn").click(function () {
     if (!country.populatedHealth) {
       country.populateHealth();
     }
+  });
+  // draw an empty age histogram table
+  var ctx = $("#ageChart");
+
+  var barChartData = {
+    labels: ["young", "middle", "old", "really old"],
+    datasets: [
+      {
+        label: "Female",
+        barPercentage: 1,
+        categoryPercentage: 0.8,
+        backgroundColor: "rgba(250,128,114,0.7)",
+        borderColor: "rgba(250,128,114,1)",
+        borderWidth: 1,
+        data: [40, 30, 20, 10],
+      },
+      {
+        label: "Male",
+        barPercentage: 1,
+        categoryPercentage: 0.8,
+        backgroundColor: "rgba(0,191,255,0.7)",
+        borderColor: "rgba(0,191,255,1)",
+        borderWidth: 1,
+        data: [10, 20, 30, 40],
+      },
+    ],
+  };
+  myChart = new Chart(ctx, {
+    type: "bar",
+    data: barChartData,
+    options: {
+      responsive: true,
+      legend: {
+        position: "bottom",
+      },
+      title: {
+        display: true,
+        text: `Age Breakdown By Gender`,
+      },
+      scales: {
+        yAxes: [{ ticks: { beginAtZero: true } }],
+      },
+    },
   });
 });
 

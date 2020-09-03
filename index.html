@@ -47,6 +47,14 @@
     <script src="/static/js/jquery-3.5.1.js"></script>
     <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
+
+    <!-- ChartJS CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.css"
+      integrity="sha512-SUJFImtiT87gVCOXl3aGC00zfDl6ggYAw5+oheJvRJ8KBXZrr/TMISSdVJ5bBarbQDRC2pR5Kto3xTR0kpZInA=="
+      crossorigin="anonymous"
+    />
   </head>
 
   <body>
@@ -421,7 +429,8 @@
 
                     <div class="row justify-content-between mt-2">
                       <div class="mr-4">Ages:</div>
-                      <div class="" id="ages"></div>
+
+                      <canvas id="ageChart" width="400" height="400"></canvas>
                     </div>
                   </div>
                 </div>
@@ -673,6 +682,11 @@
 
     <script src="/static/js/bootstrap.js"></script>
     <script src="/static/js/keys.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.js"
+      integrity="sha512-QEiC894KVkN9Tsoi6+mKf8HaCLJvyA6QIRzY5KrfINXYuP9NxdIkRQhGq3BZi0J4I7V5SidGM3XUQ5wFiMDuWg=="
+      crossorigin="anonymous"
+    ></script>
     <script src="/static/js/map.js"></script>
     <script src="/static/js/country.js"></script>
     <script src="/static/js/script.js"></script>

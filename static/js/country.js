@@ -72,6 +72,20 @@ class Country {
 
     this.languages = formatTableData(data["fb"]["languages"], ["name", "note"]);
 
+    this.ageLabels = Object.keys(data["fb"]["ages"]);
+    this.ageLabels.pop();
+    this.ageYear = data["fb"]["ages"]["date"];
+
+    this.ageData = { female: [], male: [] };
+    this.ageLabels.forEach((element) => {
+      this.ageData.female.push(data["fb"]["ages"][element]["females"]);
+      this.ageData.male.push(data["fb"]["ages"][element]["males"]);
+    });
+
+    for (var i = 0; i < this.ageLabels.length; i++) {
+      this.ageLabels[i] = this.ageLabels[i].replace(/_/g, " ");
+    }
+
     // keep track of which parts of page have been built
     this.populatedPrimary = false;
     this.populatedIntro = false;
@@ -137,8 +151,6 @@ class Country {
   }
 
   populateDemographics() {
-    // age histogram, languages
-
     createTable("#religions", this.religions, ["Religion", "Percent"]);
 
     createTable("#ethnicity", this.ethnicity, ["Ethnicity", "Percent"]);
@@ -146,6 +158,14 @@ class Country {
     createTable("#languages", this.languages, ["Language", "Notes"]);
 
     $("#populationGrowth").html(this.populationGrowth);
+
+    // draw the age histogram table
+
+    removeAllChartData(myChart);
+    updateChartTitle(myChart, this.ageYear);
+    updateLabels(myChart, this.ageLabels);
+    addChartData(myChart, "Female", this.ageData["female"]);
+    addChartData(myChart, "Male", this.ageData["male"]);
 
     this.populatedDemographics = true;
   }
@@ -224,4 +244,32 @@ function createTable(element, data, columns) {
     searching: false,
     destroy: true,
   });
+}
+
+function addChartData(chart, gender, data) {
+  chart.data.datasets.forEach((dataset) => {
+    if (dataset.label == gender) {
+      dataset.data = data;
+    }
+  });
+  chart.update();
+}
+
+function removeAllChartData(chart) {
+  chart.data.datasets.forEach((dataset) => {
+    while (dataset.data.length > 0) {
+      dataset.data.pop(); // this needs to remove all
+    }
+  });
+  chart.update();
+}
+
+function updateChartTitle(chart, year) {
+  chart.options.title.text = `Age Breakdown By Gender (${year})`;
+  chart.update();
+}
+
+function updateLabels(chart, labels) {
+  chart.data.labels = labels;
+  chart.update();
 }
