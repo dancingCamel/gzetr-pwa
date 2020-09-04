@@ -161,6 +161,14 @@ class Country {
         ? "No Data"
         : `${data["fb"]["obesity"]["percent_of_adults"]}% of adults (${data["fb"]["obesity"]["date"]})`;
 
+    // Timezones
+    this.timeZones = [];
+    data["rc"]["timezones"].forEach((timezone) => {
+      let temp = [];
+      temp.push(timezone);
+      this.timeZones.push(temp);
+    });
+
     // keep track of which parts of page have been built
     this.populatedPrimary = false;
     this.populatedIntro = false;
@@ -276,8 +284,7 @@ class Country {
   }
 
   populateTimezones() {
-    // timezones table
-    console.log("clicked timezones");
+    createTable("#timezones", this.timeZones, ["Timezones"]);
   }
 
   populateClimate() {
@@ -308,9 +315,6 @@ function formatValueAndUnits(data, date) {
 }
 
 function formatTableData(data, columns) {
-  if (data === "No Data") {
-    return "No Data";
-  }
   output = [];
 
   for (var i = 0; i < data.length; i++) {
