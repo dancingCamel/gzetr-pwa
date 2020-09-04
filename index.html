@@ -215,7 +215,7 @@
             type="button"
             class="btn btn-primary mr-sm-3 my-2 col-12 col-sm-4 col-lg-3"
             data-toggle="modal"
-            data-target="#climate"
+            data-target="#climateModal"
             id="climateModalBtn"
           >
             <i class="fas fa-cloud mr-2"></i>Climate
@@ -450,7 +450,7 @@
           <!-- Climate -->
           <div
             class="modal fade"
-            id="climate"
+            id="climateModal"
             tabindex="-1"
             aria-labelledby="climateModalLabel"
             aria-hidden="true"
@@ -470,7 +470,24 @@
                     <span aria-hidden="true">&times;</span>
                   </button>
                 </div>
-                <div class="modal-body">...</div>
+                <div class="modal-body">
+                  <div class="container mt-2">
+                    <div class="row justify-content-between mt-2">
+                      <div class="mr-4">Climate Overview:</div>
+                      <div class="" id="climateOverview"></div>
+                    </div>
+
+                    <div class="row justify-content-between mt-2">
+                      <div class="mr-4">Climate Chart:</div>
+
+                      <canvas
+                        id="climateChart"
+                        width="400"
+                        height="400"
+                      ></canvas>
+                    </div>
+                  </div>
+                </div>
                 <div class="modal-footer">
                   <button
                     type="button"

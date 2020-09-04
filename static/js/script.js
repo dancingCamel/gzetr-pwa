@@ -1,4 +1,5 @@
 var ageChart;
+var climateChart;
 
 $(document).ready(function () {
   var map = new Map("mapid");
@@ -72,10 +73,10 @@ $(document).ready(function () {
     }
   });
   // draw an empty age histogram table
-  var ctx = $("#ageChart");
+  var ctx1 = $("#ageChart");
 
-  var barChartData = {
-    labels: ["young", "middle", "old", "really old"],
+  var ageChartData = {
+    labels: [],
     datasets: [
       {
         label: "Female",
@@ -84,7 +85,7 @@ $(document).ready(function () {
         backgroundColor: "rgba(250,128,114,0.7)",
         borderColor: "rgba(250,128,114,1)",
         borderWidth: 1,
-        data: [40, 30, 20, 10],
+        data: [],
       },
       {
         label: "Male",
@@ -93,13 +94,13 @@ $(document).ready(function () {
         backgroundColor: "rgba(0,191,255,0.7)",
         borderColor: "rgba(0,191,255,1)",
         borderWidth: 1,
-        data: [10, 20, 30, 40],
+        data: [],
       },
     ],
   };
-  ageChart = new Chart(ctx, {
+  ageChart = new Chart(ctx1, {
     type: "bar",
-    data: barChartData,
+    data: ageChartData,
     options: {
       responsive: true,
       legend: {
@@ -111,6 +112,83 @@ $(document).ready(function () {
       },
       scales: {
         yAxes: [{ ticks: { beginAtZero: true } }],
+      },
+    },
+  });
+
+  // draw an empty climate chart
+  var ctx2 = $("#climateChart");
+
+  var climateChartData = {
+    labels: [
+      "Jan",
+      "Feb",
+      "Mar",
+      "Apr",
+      "May",
+      "Jun",
+      "Jul",
+      "Aug",
+      "Sep",
+      "Oct",
+      "Nov",
+      "Dec",
+    ],
+    datasets: [
+      {
+        type: "bar",
+        yAxisID: "tempAxis",
+        label: "Temp",
+        barPercentage: 1,
+        categoryPercentage: 0.8,
+        backgroundColor: "rgba(250,128,114,0.7)",
+        borderColor: "rgba(250,128,114,1)",
+        borderWidth: 1,
+        data: [40, 30, 20, 10],
+      },
+      {
+        type: "line",
+        fill: false,
+        yAxisID: "precipAxis",
+        label: "Precip",
+        barPercentage: 1,
+        categoryPercentage: 0.8,
+        backgroundColor: "rgba(0,191,255,0.7)",
+        borderColor: "rgba(0,191,255,1)",
+        borderWidth: 1,
+        data: [100, 80, 380, 420],
+      },
+    ],
+  };
+  climateChart = new Chart(ctx2, {
+    type: "bar",
+    data: climateChartData,
+    options: {
+      responsive: true,
+      legend: {
+        display: true,
+      },
+      title: {
+        display: true,
+        text: `Climate Data (Capital City)`,
+      },
+      scales: {
+        yAxes: [
+          {
+            display: true,
+            scaleLabel: { display: true, labelString: "degC" },
+            position: "left",
+            id: "tempAxis",
+            ticks: { beginAtZero: true },
+          },
+          {
+            display: true,
+            scaleLabel: { display: true, labelString: "mm" },
+            position: "right",
+            id: "precipAxis",
+            ticks: { beginAtZero: true },
+          },
+        ],
       },
     },
   });

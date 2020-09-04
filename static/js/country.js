@@ -169,6 +169,19 @@ class Country {
       this.timeZones.push(temp);
     });
 
+    // Climate
+    this.climateOverview =
+      data["fb"]["climateOverview"] === "No Data"
+        ? "No Data"
+        : data["fb"]["climateOverview"];
+
+    this.climateLabels = Object.keys(data["clim"]);
+    this.climateData = { temp: [], precip: [] };
+    this.climateLabels.forEach((element) => {
+      this.climateData.temp.push(data["clim"][element]["temp"]);
+      this.climateData.precip.push(data["clim"][element]["precip"]);
+    });
+
     // keep track of which parts of page have been built
     this.populatedPrimary = false;
     this.populatedIntro = false;
@@ -244,7 +257,7 @@ class Country {
 
     // update age histogram
     removeAllChartData(ageChart);
-    updateChartTitle(ageChart, this.ageYear);
+    updateAgeChartTitle(ageChart, this.ageYear);
     updateLabels(ageChart, this.ageLabels);
     addChartData(ageChart, "Female", this.ageData["female"]);
     addChartData(ageChart, "Male", this.ageData["male"]);
@@ -285,11 +298,19 @@ class Country {
 
   populateTimezones() {
     createTable("#timezones", this.timeZones, ["Timezones"]);
+
+    this.populatedTimezones = true;
   }
 
   populateClimate() {
-    // climate overview. climate data graphs (bar for temp with line for rainfall overlay)
-    console.log("clicked climate");
+    $("#climateOverview").html(this.climateOverview);
+
+    // update climate chart
+    removeAllChartData(climateChart);
+    addChartData(climateChart, "Temp", this.climateData["temp"]);
+    addChartData(climateChart, "Precip", this.climateData["precip"]);
+
+    this.populatedClimate = true;
   }
 
   static async getData(search) {
@@ -350,9 +371,9 @@ function createTable(element, data, columns) {
   });
 }
 
-function addChartData(chart, gender, data) {
+function addChartData(chart, label, data) {
   chart.data.datasets.forEach((dataset) => {
-    if (dataset.label == gender) {
+    if (dataset.label == label) {
       dataset.data = data;
     }
   });
@@ -362,13 +383,13 @@ function addChartData(chart, gender, data) {
 function removeAllChartData(chart) {
   chart.data.datasets.forEach((dataset) => {
     while (dataset.data.length > 0) {
-      dataset.data.pop(); // this needs to remove all
+      dataset.data.pop(); // remove all
     }
   });
   chart.update();
 }
 
-function updateChartTitle(chart, year) {
+function updateAgeChartTitle(chart, year) {
   chart.options.title.text = `Age Breakdown By Gender (${year})`;
   chart.update();
 }
