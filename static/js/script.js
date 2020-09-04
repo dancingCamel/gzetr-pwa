@@ -1,4 +1,4 @@
-var myChart;
+var ageChart;
 
 $(document).ready(function () {
   var map = new Map("mapid");
@@ -97,7 +97,7 @@ $(document).ready(function () {
       },
     ],
   };
-  myChart = new Chart(ctx, {
+  ageChart = new Chart(ctx, {
     type: "bar",
     data: barChartData,
     options: {

@@ -30,11 +30,11 @@ class Country {
     this.econOverview = data["fb"]["econOverview"];
 
     // economy
-    this.gdpGrowth = formatValueAndDate(data["fb"]["growth"]);
-    this.unemployment = formatValueAndDate(data["fb"]["unemployment"]);
-    this.imports = formatValueAndDate(data["fb"]["imports"]);
-    this.exports = formatValueAndDate(data["fb"]["exports"]);
-    this.inflation = formatValueAndDate(data["fb"]["inflation"]);
+    this.gdpGrowth = formatValueAndUnits(data["fb"]["growth"], true);
+    this.unemployment = formatValueAndUnits(data["fb"]["unemployment"], true);
+    this.imports = formatValueAndUnits(data["fb"]["imports"], true);
+    this.exports = formatValueAndUnits(data["fb"]["exports"], true);
+    this.inflation = formatValueAndUnits(data["fb"]["inflation"], true);
 
     this.historicalGDP = formatTableData(data["fb"]["gdp"], [
       "value",
@@ -55,7 +55,7 @@ class Country {
       element[0] = Math.round(element[0]).toLocaleString();
     });
 
-    // demographics
+    // Demographics
     this.religions = formatTableData(data["fb"]["religions"], [
       "name",
       "percent",
@@ -85,6 +85,81 @@ class Country {
     for (var i = 0; i < this.ageLabels.length; i++) {
       this.ageLabels[i] = this.ageLabels[i].replace(/_/g, " ");
     }
+
+    // Education
+    this.literacy = formatValueAndUnits(data["fb"]["literacy"], false);
+
+    this.yearsInSchool = formatValueAndUnits(
+      data["fb"]["yearsInSchool"],
+      false
+    );
+
+    this.eduExpenditure =
+      data["fb"]["eduExpenditure"] === "No Data"
+        ? "No Data"
+        : `${data["fb"]["eduExpenditure"]["percent_of_gdp"]} % of GDP (${data["fb"]["eduExpenditure"]["date"]})`;
+
+    // Geography
+    this.highestPoint =
+      data["fb"]["highestPoint"] === "No Data"
+        ? "No Data"
+        : `${data["fb"]["highestPoint"]["name"]} (${formatValueAndUnits(
+            data["fb"]["highestPoint"]["elevation"]
+          )})`;
+
+    this.lowestPoint =
+      data["fb"]["lowestPoint"] === "No Data"
+        ? "No Data"
+        : `${data["fb"]["lowestPoint"]["name"]} (${formatValueAndUnits(
+            data["fb"]["lowestPoint"]["elevation"]
+          )})`;
+
+    this.naturalResources = data["fb"]["naturalResources"].join("; ");
+    let naturalHazards = [];
+    data["fb"]["naturalHazards"].forEach((hazard) => {
+      naturalHazards.push(hazard.description);
+    });
+    this.naturalHazards = naturalHazards.join("; ");
+
+    // Health
+    this.birthRate =
+      data["fb"]["birthRate"] === "No Data"
+        ? "No Data"
+        : `${data["fb"]["birthRate"]["births_per_1000_population"]}/1000 population (${data["fb"]["birthRate"]["date"]})`;
+
+    this.deathRate =
+      data["fb"]["deathRate"] === "No Data"
+        ? "No Data"
+        : `${data["fb"]["deathRate"]["deaths_per_1000_population"]}/1000 population (${data["fb"]["deathRate"]["date"]})`;
+
+    this.infMortality = formatValueAndUnits(
+      data["fb"]["infantMortality"],
+      false
+    );
+
+    this.lifeExpectancy = formatValueAndUnits(
+      data["fb"]["lifeExpectancy"],
+      false
+    );
+
+    this.fertilityRate =
+      data === "No Data"
+        ? "No Data"
+        : `${data["fb"]["fertility"]["children_born_per_woman"]} child/woman (${data["fb"]["fertility"]["date"]})`;
+
+    this.cleanWater = formatValueAndUnits(data["fb"]["cleanWater"], false);
+
+    this.sanitation = formatValueAndUnits(data["fb"]["sanitation"], false);
+
+    this.hiv =
+      data["fb"]["hiv"] === "No Data"
+        ? "No Data"
+        : `${data["fb"]["hiv"]["percent_of_adults"]}% of adults (${data["fb"]["hiv"]["date"]})`;
+
+    this.obesity =
+      data["fb"]["obesity"] === "No Data"
+        ? "No Data"
+        : `${data["fb"]["obesity"]["percent_of_adults"]}% of adults (${data["fb"]["obesity"]["date"]})`;
 
     // keep track of which parts of page have been built
     this.populatedPrimary = false;
@@ -159,30 +234,45 @@ class Country {
 
     $("#populationGrowth").html(this.populationGrowth);
 
-    // draw the age histogram table
-
-    removeAllChartData(myChart);
-    updateChartTitle(myChart, this.ageYear);
-    updateLabels(myChart, this.ageLabels);
-    addChartData(myChart, "Female", this.ageData["female"]);
-    addChartData(myChart, "Male", this.ageData["male"]);
+    // update age histogram
+    removeAllChartData(ageChart);
+    updateChartTitle(ageChart, this.ageYear);
+    updateLabels(ageChart, this.ageLabels);
+    addChartData(ageChart, "Female", this.ageData["female"]);
+    addChartData(ageChart, "Male", this.ageData["male"]);
 
     this.populatedDemographics = true;
   }
 
   populateEducation() {
-    // literacy, years in school, expenditure
-    console.log("clicked education");
+    $("#literacy").html(this.literacy);
+    $("#yearsInSchool").html(this.yearsInSchool);
+    $("#eduExpenditure").html(this.eduExpenditure);
+
+    this.populatedEducation = true;
   }
 
   populateGeography() {
-    // highest point, lowest point, natural resources, natural hazards
-    console.log("clicked geography");
+    $("#highestPoint").html(this.highestPoint);
+    $("#lowestPoint").html(this.lowestPoint);
+    $("#natHaz").html(this.naturalHazards);
+    $("#natResources").html(this.naturalResources);
+
+    this.populatedGeography = true;
   }
 
   populateHealth() {
-    // fertility rate, death rate, clean water, birth rate, infant mortality, sanitation, hiv, obesity,life expectancy,
-    console.log("clicked health");
+    $("#fertilityRate").html(this.fertilityRate);
+    $("#deathRate").html(this.deathRate);
+    $("#cleanWater").html(this.cleanWater);
+    $("#birthRate").html(this.birthRate);
+    $("#infMortality").html(this.infMortality);
+    $("#sanitation").html(this.sanitation);
+    $("#hiv").html(this.hiv);
+    $("#obesity").html(this.obesity);
+    $("#lifeExpectancy").html(this.lifeExpectancy);
+
+    this.populatedHealth = true;
   }
 
   populateTimezones() {
@@ -203,14 +293,24 @@ class Country {
   }
 }
 
-function formatValueAndDate(data) {
-  let output = `${data["value"].toLocaleString()} ${data["units"]} (${
-    data["date"]
-  })`;
+function formatValueAndUnits(data, date) {
+  if (data === "No Data") {
+    return "No Data";
+  }
+  let output = `${data["value"].toLocaleString()} ${data["units"].replace(
+    /_/g,
+    " "
+  )}`;
+  if (date === true) {
+    output += ` (${data["date"]})`;
+  }
   return output;
 }
 
 function formatTableData(data, columns) {
+  if (data === "No Data") {
+    return "No Data";
+  }
   output = [];
 
   for (var i = 0; i < data.length; i++) {
