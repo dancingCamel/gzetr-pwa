@@ -72,8 +72,8 @@
             $output['fertility'] = checkExists($data->people,'total_fertility_rate');
 
             // health
-            $output['cleanWater'] = checkExists($data->people->drinking_water_source->improved,'total');
-            $output['sanitation'] = checkExists($data->people->sanitation_facility_access->improved,'total');
+            $output['cleanWater'] = checkExists(checkExists(checkExists($data->people,'drinking_water_source'),'improved'),'total');
+            $output['sanitation'] = checkExists(checkExists(checkExists($data->people,'sanitation_facility_access'),'improved'),'total');
             $output['hiv'] = checkExists(checkExists($data->people,'hiv_aids'),'adult_prevalence_rate');
             $output['obesity'] = checkExists($data->people,'adult_obesity');
 

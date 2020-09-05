@@ -71,8 +71,4 @@ class Map {
   fitBounds() {
     this.map.fitBounds(this.outlineCountry.getBounds());
   }
-
-  resetSize() {
-    this.map.invalidateSize();
-  }
 }
