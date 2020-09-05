@@ -20,8 +20,14 @@ class Country {
     this.officialLang = languages.join(", ");
     this.tld = data["rc"]["tld"].join(", ");
     this.callingCodes = data["rc"]["callingCodes"].join(", ");
-    this.currencySymbol = data["oc"]["currencySymbol"];
-    this.currencyName = data["oc"]["currencyName"];
+    this.currencySymbol =
+      data["oc"]["currencySymbol"] === undefined
+        ? "?"
+        : data["oc"]["currencySymbol"];
+    this.currencyName =
+      data["oc"]["currencyName"] === undefined
+        ? "Unknown"
+        : data["oc"]["currencyName"];
     this.wikiLink =
       "https://wikipedia.com/wiki/" + data["geo"]["properties"]["NAME"];
     this.wikiText = data["geo"]["properties"]["NAME"];
@@ -174,13 +180,15 @@ class Country {
       data["fb"]["climateOverview"] === "No Data"
         ? "No Data"
         : data["fb"]["climateOverview"];
-
-    this.climateLabels = Object.keys(data["clim"]);
-    this.climateData = { temp: [], precip: [] };
-    this.climateLabels.forEach((element) => {
-      this.climateData.temp.push(data["clim"][element]["temp"]);
-      this.climateData.precip.push(data["clim"][element]["precip"]);
-    });
+    this.climateSource = data["clim"];
+    if (this.climateSource != undefined && this.climateSource !== "No Data") {
+      this.climateLabels = Object.keys(data["clim"]);
+      this.climateData = { temp: [], precip: [] };
+      this.climateLabels.forEach((element) => {
+        this.climateData.temp.push(data["clim"][element]["temp"]);
+        this.climateData.precip.push(data["clim"][element]["precip"]);
+      });
+    }
 
     // keep track of which parts of page have been built
     this.populatedPrimary = false;
@@ -303,12 +311,16 @@ class Country {
   }
 
   populateClimate() {
+    if (this.climateSource != undefined && this.climateSource !== "No Data") {
+      $("#climateAlert").hide();
+      // update climate chart
+      removeAllChartData(climateChart);
+      addChartData(climateChart, "Temp", this.climateData["temp"]);
+      addChartData(climateChart, "Precip", this.climateData["precip"]);
+    } else {
+      $("#climateAlert").show();
+    }
     $("#climateOverview").html(this.climateOverview);
-
-    // update climate chart
-    removeAllChartData(climateChart);
-    addChartData(climateChart, "Temp", this.climateData["temp"]);
-    addChartData(climateChart, "Precip", this.climateData["precip"]);
 
     this.populatedClimate = true;
   }

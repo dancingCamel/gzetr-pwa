@@ -476,10 +476,18 @@
                       <div class="mr-4">Climate Overview:</div>
                       <div class="" id="climateOverview"></div>
                     </div>
+                    
 
                     <div class="row justify-content-between mt-2">
                       <div class="mr-4">Climate Chart:</div>
-
+                      <div
+                      class="alert alert-danger"
+                      role="alert"
+                      id="climateAlert"
+                      sytle="display: none;"
+                    >
+                      Error: Couldn't find climate data for this country.
+                    </div>
                       <canvas
                         id="climateChart"
                         width="400"

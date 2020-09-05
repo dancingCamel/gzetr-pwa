@@ -144,7 +144,7 @@ $(document).ready(function () {
         backgroundColor: "rgba(250,128,114,0.7)",
         borderColor: "rgba(250,128,114,1)",
         borderWidth: 1,
-        data: [40, 30, 20, 10],
+        data: [],
       },
       {
         type: "line",
@@ -156,7 +156,7 @@ $(document).ready(function () {
         backgroundColor: "rgba(0,191,255,0.7)",
         borderColor: "rgba(0,191,255,1)",
         borderWidth: 1,
-        data: [100, 80, 380, 420],
+        data: [],
       },
     ],
   };
@@ -170,7 +170,7 @@ $(document).ready(function () {
       },
       title: {
         display: true,
-        text: `Climate Data (Capital City)`,
+        text: `Climate Data (Centre)`,
       },
       scales: {
         yAxes: [

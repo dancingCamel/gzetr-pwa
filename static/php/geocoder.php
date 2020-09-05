@@ -25,15 +25,6 @@
 
 			$searchResult = [];
 
-			// put formatting in main script;
-			// $entry = $result['results'][0];
-
-			// $searchResult['formatted'] = $entry['formatted'];
-			// $searchResult['geometry']['lat'] = $entry['geometry']['lat'];
-			// $searchResult['geometry']['lng'] = $entry['geometry']['lng'];
-			// $searchResult['currency']['code'] = $entry['annotations']['currency']['iso_code'];
-			// $searchResult['currency']['name'] = $entry['annotations']['currency']['name'];
-			// $searchResult['currency']['symbol'] = $entry['annotations']['currency']['symbol'];
 			try{
 				$output = $result['results'][0];
 			}
@@ -48,11 +39,17 @@
 
 		public static function formatOcData($data){
 			// Opencage : currency
-			$output['currencyName'] = $data['annotations']['currency']['name'];
-			$output['currencySymbol'] = $data['annotations']['currency']['symbol'];
+			if (array_key_exists('currency', $data['annotations'])){
+				$output['currencyName'] = $data['annotations']['currency']['name'];
+				$output['currencySymbol'] = $data['annotations']['currency']['symbol'];
+			} else {
+				$output = "No Data";
+			}
 
 			return $output;
 		}
 	}
+
+
 
 ?>

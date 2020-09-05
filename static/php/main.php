@@ -43,10 +43,13 @@
     // use rest country to search climate data api static method
     // TODO: if search for Iran climate (ir) can't find weather stations.
     // Need to tell users that climate data is not available somehow
-    $climate_result = ClimateData::getClimateData($oc_decode['geometry']['lat'], $oc_decode['geometry']['lng']);
+    // $climate_result = ClimateData::getClimateData($oc_decode['geometry']['lat'], $oc_decode['geometry']['lng']);
+    // using capital city may not work. try again when api allows calls again
+    $climate_result = ClimateData::getClimateData($rc_decode['capital']);
     $climate_decode = json_decode($climate_result,true);
     // $output = handleErrorIfExists($climate_decode);
-    // // maybe use goto keyword and jump to point after formatting climate data?
+    // if can't find data add status and no data to output. then add message to front end
+
     // if ($output){
     //     goto end;
     // }
