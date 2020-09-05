@@ -205,24 +205,3 @@ $(document).ready(function () {
     },
   });
 });
-
-// helper functions
-function showLoader() {
-  $("#loader").modal({
-    backdrop: "static", //remove ability to close modal with click
-    keyboard: false, //remove option to close with keyboard
-    show: true,
-  });
-}
-
-function hideLoader() {
-  $("#loader").modal("hide");
-}
-
-function showError(message) {
-  $("#errorBox").text(`An error occurred: ${message}`);
-  $("#errorBox").show();
-}
-function hideError() {
-  $("#errorBox").hide();
-}
