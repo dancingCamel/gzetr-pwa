@@ -87,6 +87,14 @@
 
     <main role="main" class="container mb-5">
       <div class="container">
+        <div
+          class="alert alert-danger"
+          role="alert"
+          style="display: none"
+          id="errorBox"
+        >
+          An error occurred.
+        </div>
         <div class="row mb-3">
           <div class="col-xs-12 col-md-6 mb-3 mt-3">
             <div id="mapid"></div>
@@ -476,18 +484,17 @@
                       <div class="mr-4">Climate Overview:</div>
                       <div class="" id="climateOverview"></div>
                     </div>
-                    
 
                     <div class="row justify-content-between mt-2">
                       <div class="mr-4">Climate Chart:</div>
                       <div
-                      class="alert alert-danger"
-                      role="alert"
-                      id="climateAlert"
-                      sytle="display: none;"
-                    >
-                      Error: Couldn't find climate data for this country.
-                    </div>
+                        class="alert alert-danger"
+                        role="alert"
+                        id="climateAlert"
+                        sytle="display: none;"
+                      >
+                        Error: Couldn't find climate data for this country.
+                      </div>
                       <canvas
                         id="climateChart"
                         width="400"

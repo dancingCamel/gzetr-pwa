@@ -8,13 +8,25 @@ $(document).ready(function () {
   var country;
 
   $("#searchBtn").click(async function () {
+    hideError();
     showLoader();
 
     let search = $("#searchBox").val();
 
     let response = await Country.getData(search);
 
-    // add status code validation here
+    // error checking
+    if (response["status"]["name"] === "error") {
+      console.log(response);
+
+      setTimeout(function () {
+        showError(response["message"]);
+        hideLoader();
+      }, 500);
+
+      return;
+    }
+
     country = new Country(response);
     country.populatePrimary();
     country.populateIntro();
@@ -207,5 +219,10 @@ function hideLoader() {
   $("#loader").modal("hide");
 }
 
-function showError(message) {}
-function hideError() {}
+function showError(message) {
+  $("#errorBox").text(`An error occurred: ${message}`);
+  $("#errorBox").show();
+}
+function hideError() {
+  $("#errorBox").hide();
+}

@@ -8,7 +8,7 @@
 	include('env.php');
 
 	class Geolocation{
-		public static function getCountryByName($name){
+		public static function getDataByName($name){
 			$key = getenv ( 'OPENCAGE_APIKEY', $local_only = TRUE );
 			// Change this to own api key. saved in env vars
 			$geocoder = new \OpenCage\Geocoder\Geocoder($key);

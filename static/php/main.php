@@ -33,7 +33,7 @@
 
 
     // use rest country to search opencage static method
-    $oc_result = Geolocation::getCountryByName($rc_decode['name']);
+    $oc_result = Geolocation::getDataByName($rc_decode['name']);
     $oc_decode = json_decode($oc_result,true);
     $output = handleErrorIfExists($oc_decode);
     if ($output){
@@ -44,8 +44,10 @@
     // TODO: if search for Iran climate (ir) can't find weather stations.
     // Need to tell users that climate data is not available somehow
     // $climate_result = ClimateData::getClimateData($oc_decode['geometry']['lat'], $oc_decode['geometry']['lng']);
-    // using capital city may not work. try again when api allows calls again
-    $climate_result = ClimateData::getClimateData($rc_decode['capital']);
+    // get lat long of capital city
+    $capital_result = Geolocation::getDataByName($rc_decode['capital']);
+    $capital_decode = json_decode($capital_result,true);
+    $climate_result = ClimateData::getClimateData($capital_decode['geometry']['lat'], $capital_decode['geometry']['lng']);
     $climate_decode = json_decode($climate_result,true);
     // $output = handleErrorIfExists($climate_decode);
     // if can't find data add status and no data to output. then add message to front end
@@ -83,7 +85,8 @@
     function handleErrorIfExists($data){
         if (is_array($data)){
             if (array_key_exists('status', $data)){
-                
+                $output['status']['code'] = $data['status'];
+                $output['status']['name'] = 'error';
                 $output['message'] = $data['message'];
                 return $output;
             } else if (array_key_exists('errorCode', $data)){

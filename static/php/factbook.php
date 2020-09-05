@@ -21,7 +21,6 @@
                             $ret['status'] = 404;
                             $ret['message'] = "Country not found. Doesn't Exist in Factbook";
                         }
-                        
                     }
                     else {
                         $ret['status'] = 500;

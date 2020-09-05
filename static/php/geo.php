@@ -11,6 +11,8 @@ class GeoJson
             if ($feature->properties->ADM0_A3_IS == $country){
                 $output = $feature;
             break;
+            } else {
+                $output = "No Data";
             }
         }
 

@@ -1,12 +1,13 @@
 <?php
 class ClimateData
     {
-        // public static function getClimateData($lat,$long){
-        public static function getClimateData($city){
+        public static function getClimateData($lat,$long){
+        // public static function getClimateData($city){
             $ch = curl_init();
             $key = getenv ( 'VISCROSS_APIKEY', $local_only = TRUE );
-            // $url = "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/weatherdata/historysummary?aggregateHours=24&combinationMethod=aggregate&collectStationContributions=false&maxStations=3&maxDistance=-1&minYear=2017&maxYear=2019&chronoUnit=months&breakBy=years&dailySummaries=false&contentType=json&unitGroup=uk&locationMode=single&key=$key&locations=$lat%2C%20$long";
-            $url = "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/weatherdata/historysummary?aggregateHours=24&combinationMethod=aggregate&collectStationContributions=false&maxStations=3&maxDistance=-1&minYear=2017&maxYear=2019&chronoUnit=months&breakBy=years&dailySummaries=false&contentType=json&unitGroup=uk&locationMode=single&key=$key&locations=$city";
+            $url = "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/weatherdata/historysummary?aggregateHours=24&combinationMethod=aggregate&collectStationContributions=false&maxStations=3&maxDistance=-1&minYear=2017&maxYear=2019&chronoUnit=months&breakBy=years&dailySummaries=false&contentType=json&unitGroup=uk&locationMode=single&key=$key&locations=$lat%2C%20$long";
+            // get the lat and log of capital city, then pass to this funciton
+            // $url = "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/weatherdata/historysummary?aggregateHours=24&combinationMethod=aggregate&collectStationContributions=false&maxStations=3&maxDistance=-1&minYear=2017&maxYear=2019&chronoUnit=months&breakBy=years&dailySummaries=false&contentType=json&unitGroup=uk&locationMode=single&key=$key&locations=$city";
             curl_setopt_array($ch, array(
                 CURLOPT_URL => $url,
                 CURLOPT_MAXREDIRS => 10,
@@ -30,10 +31,17 @@ class ClimateData
         }
 
         public static function formatClimateData($raw){
+            
+            if ($raw == null){
+                $output = "No Data";
+                goto returnFormattedClimate;
+            }
+
             if (array_key_exists('errorCode', $raw)){
                 $output = "No Data";
                 goto returnFormattedClimate;
             }
+            
             $months = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'];
 
             foreach($months as $month){
