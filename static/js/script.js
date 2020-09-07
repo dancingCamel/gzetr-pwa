@@ -204,4 +204,8 @@ $(document).ready(async function () {
       },
     },
   });
+
+  let location = await getLocation();
+  $("#searchBox").val(location);
+  $("#searchBtn").trigger("click");
 });

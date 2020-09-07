@@ -100,3 +100,10 @@ function updateLabels(chart, labels) {
   chart.data.labels = labels;
   chart.update();
 }
+
+async function getLocation() {
+  let response = await fetch("https://freegeoip.app/json/");
+  let locData = await response.json();
+
+  return locData["country_code"];
+}
