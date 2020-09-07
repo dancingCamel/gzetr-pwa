@@ -1,10 +1,10 @@
 var ageChart;
 var climateChart;
 
-$(document).ready(function () {
+$(document).ready(async function () {
+  $(".basicAutoComplete").autoComplete();
+
   var map = new Map("mapid");
-  // var error = false;
-  // var errorMessage = "";
   var country;
 
   $("#searchBtn").click(async function () {

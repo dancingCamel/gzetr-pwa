@@ -68,11 +68,13 @@
       <div class="col-xs-6">
         <form class="form-inline my-2 my-lg-0">
           <input
-            class="form-control mr-sm-2"
+            class="form-control mr-sm-2 basicAutoComplete"
             type="text"
             placeholder="e.g. Rwanda/RW"
             aria-label="Search"
             id="searchBox"
+            data-url="../../static/php/tags.php"
+            autocomplete="off"
           />
           <button
             class="btn btn-secondary my-2 my-sm-0"
@@ -799,6 +801,7 @@
     </footer>
 
     <script src="/static/js/bootstrap.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/xcash/bootstrap-autocomplete@v2.3.7/dist/latest/bootstrap-autocomplete.min.js"></script>
     <script src="/static/js/keys.js"></script>
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.js"

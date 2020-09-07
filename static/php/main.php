@@ -49,12 +49,7 @@
     $capital_decode = json_decode($capital_result,true);
     $climate_result = ClimateData::getClimateData($capital_decode['geometry']['lat'], $capital_decode['geometry']['lng']);
     $climate_decode = json_decode($climate_result,true);
-    // $output = handleErrorIfExists($climate_decode);
-    // if can't find data add status and no data to output. then add message to front end
 
-    // if ($output){
-    //     goto end;
-    // }
 
     // use opencage country name response to search factbook static method
     $fb_decode = Factbook::getDataByCountry($oc_decode['components']['country']);
