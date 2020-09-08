@@ -26,7 +26,44 @@
 			$searchResult = [];
 
 			try{
-				$output = $result['results'][0];
+				if(gettype($result['results'] === 'array')){
+					$output = $result['results'][0];
+					// https://api.opencagedata.com/geocode/v1/json/?q=United%20States%20Minor%20Outlying%20Islands&key=5d3b9ac806534c019274987a54d31cfd
+				}
+				
+			}
+			catch (exception $e){
+				$output['code'] = 500;
+				$output['name'] = "error";
+				$output['message'] = "Something went wrong reading the opencage data.";
+			}
+
+			return json_encode($output, JSON_UNESCAPED_UNICODE);
+		}
+
+		public static function getDataByCoords($lat, $long){
+			$key = getenv ( 'OPENCAGE_APIKEY', $local_only = TRUE );
+			// Change this to own api key. saved in env vars
+			$geocoder = new \OpenCage\Geocoder\Geocoder($key);
+			$query = $lat . "," .$long;
+			$result = $geocoder->geocode($query,['language'=>"en"]);
+
+			if (in_array($result['status']['code'], [401,402,403,429])){
+				$output['code'] = $result['status']['code'];
+				$output['name'] = "error";
+				$output['message'] = $result['status']['message'];
+				
+				return json_encode($output, JSON_UNESCAPED_UNICODE);
+			}
+
+			$searchResult = [];
+
+			try{
+				if(gettype($result['results'] === 'array')){
+					$output = $result['results'][0];
+					// https://api.opencagedata.com/geocode/v1/json/?q=United%20States%20Minor%20Outlying%20Islands&key=5d3b9ac806534c019274987a54d31cfd
+				}
+				
 			}
 			catch (exception $e){
 				$output['code'] = 500;

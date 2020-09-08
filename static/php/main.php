@@ -41,13 +41,13 @@
     }
 
     // use rest country to search climate data api static method
-    // TODO: if search for Iran climate (ir) can't find weather stations.
-    // Need to tell users that climate data is not available somehow
-    // $climate_result = ClimateData::getClimateData($oc_decode['geometry']['lat'], $oc_decode['geometry']['lng']);
-    // get lat long of capital city
-    $capital_result = Geolocation::getDataByName($rc_decode['capital']);
-    $capital_decode = json_decode($capital_result,true);
-    $climate_result = ClimateData::getClimateData($capital_decode['geometry']['lat'], $capital_decode['geometry']['lng']);
+    if ($rc_decode['capital'] === ""){
+        $climate_result = ClimateData::getClimateData($oc_decode['geometry']['lat'], $oc_decode['geometry']['lng']);
+    } else {
+        $capital_result = Geolocation::getDataByName($rc_decode['capital']);
+        $capital_decode = json_decode($capital_result,true);
+        $climate_result = ClimateData::getClimateData($capital_decode['geometry']['lat'], $capital_decode['geometry']['lng']);
+    }
     $climate_decode = json_decode($climate_result,true);
 
 

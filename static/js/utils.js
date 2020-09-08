@@ -121,6 +121,7 @@ async function loadCountry(search) {
 
     setTimeout(function () {
       showError(response["message"]);
+      showMain();
       hideLoader();
     }, 500);
 
