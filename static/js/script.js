@@ -3,8 +3,8 @@ var climateChart;
 var country;
 
 $(document).ready(async function () {
+  // page setup
   $(".basicAutoComplete").autoComplete();
-
   var map = new Map("mapid");
 
   $("#searchBtn").click(async function () {
@@ -22,6 +22,7 @@ $(document).ready(async function () {
     }
   });
 
+  // Set up modal button functions
   $("#econModalBtn").click(function () {
     if (!country.populatedEconomy) {
       country.populateEconomy();
@@ -184,6 +185,7 @@ $(document).ready(async function () {
     },
   });
 
+  // Get user's location when first visit page
   let location = await getLocation();
   await loadCountry(location);
   country.populatePrimary();

@@ -109,6 +109,7 @@ async function getLocation() {
 }
 
 async function loadCountry(search) {
+  hideMain();
   hideError();
   showLoader();
 
@@ -127,6 +128,14 @@ async function loadCountry(search) {
   }
 
   country = new Country(response);
-
+  showMain();
   hideLoader();
+}
+
+function hideMain() {
+  $("main").css("visibility", "hidden");
+}
+
+function showMain() {
+  $("main").css("visibility", "visible");
 }
