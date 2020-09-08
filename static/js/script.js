@@ -1,39 +1,18 @@
 var ageChart;
 var climateChart;
+var country;
 
 $(document).ready(async function () {
   $(".basicAutoComplete").autoComplete();
 
   var map = new Map("mapid");
-  var country;
 
   $("#searchBtn").click(async function () {
-    hideError();
-    showLoader();
-
     let search = $("#searchBox").val();
-
-    let response = await Country.getData(search);
-
-    // error checking
-    if (response["status"]["name"] === "error") {
-      console.log(response);
-
-      setTimeout(function () {
-        showError(response["message"]);
-        hideLoader();
-      }, 500);
-
-      return;
-    }
-
-    country = new Country(response);
+    await loadCountry(search);
     country.populatePrimary();
     country.populateIntro();
-
     map.setOutline(country.geojson);
-
-    hideLoader();
   });
 
   $("#searchBox").keydown(function (e) {
@@ -206,6 +185,8 @@ $(document).ready(async function () {
   });
 
   let location = await getLocation();
-  $("#searchBox").val(location);
-  $("#searchBtn").trigger("click");
+  await loadCountry(location);
+  country.populatePrimary();
+  country.populateIntro();
+  map.setOutline(country.geojson);
 });

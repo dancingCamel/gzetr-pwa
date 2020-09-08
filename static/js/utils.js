@@ -107,3 +107,26 @@ async function getLocation() {
 
   return locData["country_code"];
 }
+
+async function loadCountry(search) {
+  hideError();
+  showLoader();
+
+  let response = await Country.getData(search);
+
+  // error checking
+  if (response["status"]["name"] === "error") {
+    console.log(response);
+
+    setTimeout(function () {
+      showError(response["message"]);
+      hideLoader();
+    }, 500);
+
+    return;
+  }
+
+  country = new Country(response);
+
+  hideLoader();
+}
