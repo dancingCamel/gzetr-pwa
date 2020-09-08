@@ -162,7 +162,7 @@ $(document).ready(async function () {
       },
       title: {
         display: true,
-        text: `Climate Data (Centre)`,
+        text: `Climate Data`,
       },
       scales: {
         yAxes: [

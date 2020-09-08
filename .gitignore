@@ -2,3 +2,5 @@
 /static/libs/OpenCage
 env.php
 keys.js
+dbSetup.txt
+test.php

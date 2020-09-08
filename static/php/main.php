@@ -73,7 +73,10 @@
 
     end:
     header('Content-Type: application/json; charset=UTF-8');
-    echo json_encode($output, JSON_UNESCAPED_UNICODE); 
+    $jsonEncoded = json_encode($output, JSON_UNESCAPED_UNICODE);
+
+    // save to database here - check if row exists (taken from earlier) then insert or update
+    echo $jsonEncoded;
     
 
     // helper functions
