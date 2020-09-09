@@ -113,7 +113,15 @@ async function loadCountry(search) {
   hideError();
   showLoader();
 
-  let response = await Country.getData(search);
+  let response = {};
+  // check to see if country exists in local storage. if not, get it from server
+  if (getLocalStorage(search) === null) {
+    // get from server
+    response = await Country.getData(search);
+  } else {
+    // get from localstorage stringified so need to parse
+    response = JSON.parse(getLocalStorage(search));
+  }
 
   // error checking
   if (response["status"]["name"] === "error") {
@@ -131,6 +139,14 @@ async function loadCountry(search) {
   country = new Country(response);
 
   setTimeout(function () {
+    // add response to local storage
+    if (response["clim"] === "No Data") {
+      // set shorter time to live if have no climate data
+      setLocalStorage(search, response, 86400);
+    } else {
+      setLocalStorage(search, response);
+    }
+
     showMain();
     hideLoader();
   }, 500);
@@ -142,4 +158,32 @@ function hideMain() {
 
 function showMain() {
   $("main").css("visibility", "visible");
+}
+
+function getLocalStorage(key) {
+  const itemStr = localStorage.getItem(key);
+
+  if (!itemStr) {
+    return null;
+  }
+  const item = JSON.parse(itemStr);
+  const now = new Date();
+  // compare the expiry time of the item with the current time
+  if (now.getTime() > item.expiry) {
+    // If the item is expired, delete the item from storage
+    // and return null
+    localStorage.removeItem(key);
+    return null;
+  }
+  return item.value;
+}
+
+function setLocalStorage(key, data, ttl = 1209600) {
+  const now = new Date();
+
+  const item = {
+    value: data,
+    expiry: now.getTime() + ttl,
+  };
+  localStorage.setItem(key, JSON.stringify(item));
 }
