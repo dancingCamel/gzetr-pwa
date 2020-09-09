@@ -39,6 +39,13 @@ class CountryDb {
             }
         } 
 
+
+        if (count($output)===0){
+            $output = "Country not found";
+        } elseif (count($output) > 1){
+            $output = "More than one entry has that name.";
+        }
+
         return $output;
     }
 
@@ -47,7 +54,7 @@ class CountryDb {
             return "Missing parameters";
         }
 
-        if (sizeof($this->selectCountry($country)) > 0){
+        if (gettype($this->selectCountry($country)) === 'array'){
             return "Country already exists";
         }
 
@@ -59,10 +66,12 @@ class CountryDb {
         if ($climateData){
             // add one month
             $expiry = $current_timestamp + 2628000;
-         } else {
-             // add one day
-             $expiry = $current_timestamp + 86400;
-         }
+        } else {
+            // add one day
+            $expiry = $current_timestamp + 86400;
+        }
+
+        $dataStr = $conn->real_escape_string($dataStr);
 
         // form sql query - not escaping string as created by own server
         $sql = "INSERT INTO countries (name, alpha2, data, expiry) VALUES ('$country', '$alpha', '$dataStr', $expiry);";
@@ -74,9 +83,6 @@ class CountryDb {
         }
     }
 
-    // TODO:
-    // this is complicated update function. need to replace with one with fixed table, where etc. should only pass county, alpha2 and json
-    // use insert into where sql
     public function updateCountry($country, $alpha, $dataStr, $climateData = true) {
         if ( empty( $country ) || empty( $alpha ) || empty($dataStr)) {
             return "Missing parameters";
@@ -90,6 +96,8 @@ class CountryDb {
 
         // Connect to the database
         $conn = $this->connect();
+
+        $dataStr = $conn->real_escape_string($dataStr);
         
         // use country name
         $sql = "UPDATE countries SET alpha2='$alpha', data='$dataStr', expiry='$expiry'  WHERE name='$country'";

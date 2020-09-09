@@ -34,12 +34,12 @@ class ClimateData
             
             if ($raw == null){
                 $output = "No Data";
-                goto returnFormattedClimate;
+                return $output;
             }
 
             if (array_key_exists('errorCode', $raw)){
                 $output = "No Data";
-                goto returnFormattedClimate;
+                return $output;
             }
             
             $months = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'];
@@ -82,7 +82,6 @@ class ClimateData
             $output['november'] = $nov;
             $output['december'] = $dec;
 
-            returnFormattedClimate: 
             return $output;
         }
 
