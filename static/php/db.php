@@ -53,12 +53,12 @@ class CountryDb {
 
         $conn = $this->connect();
 
-         // create expiry date
-         $current_timestamp = time();
-         // check to see if got climate data
-         if ($climateData){
-             // add one month
-             $expiry = $current_timestamp + 2628000;
+        // create expiry date
+        $current_timestamp = time();
+        // check to see if got climate data
+        if ($climateData){
+            // add one month
+            $expiry = $current_timestamp + 2628000;
          } else {
              // add one day
              $expiry = $current_timestamp + 86400;
@@ -77,63 +77,44 @@ class CountryDb {
     // TODO:
     // this is complicated update function. need to replace with one with fixed table, where etc. should only pass county, alpha2 and json
     // use insert into where sql
-    public function update($table, $data, $format, $where, $where_format) {
-        // Check for $table or $data not set
-        if ( empty( $table ) || empty( $data ) ) {
-            return false;
+    public function updateCountry($country, $alpha, $dataStr, $climateData = true) {
+        if ( empty( $country ) || empty( $alpha ) || empty($dataStr)) {
+            return "Missing parameters";
+        }
+
+        if (sizeof($this->selectCountry($country)) === 0){
+            return "Cannot update country - doesn't exist";
         }
         
+        $expiry = $this->getExpiry($climateData);
+
         // Connect to the database
-        $db = $this->connect();
+        $conn = $this->connect();
         
-        // Cast $data and $format to arrays
-        $data = (array) $data;
-        $format = (array) $format;
+        // use country name
+        $sql = "UPDATE countries SET alpha2='$alpha', data='$dataStr', expiry='$expiry'  WHERE name='$country'";
         
-        // Build format array
-        $format = implode('', $format); 
-        $format = str_replace('%', '', $format);
-        $where_format = implode('', $where_format); 
-        $where_format = str_replace('%', '', $where_format);
-        $format .= $where_format;
-        
-        list( $fields, $placeholders, $values ) = $this->prep_query($data, 'update');
-        
-        //Format where clause
-        $where_clause = '';
-        $where_values = '';
-        $count = 0;
-        
-        foreach ( $where as $field => $value ) {
-            if ( $count > 0 ) {
-                $where_clause .= ' AND ';
-            }
-            
-            $where_clause .= $field . '=?';
-            $where_values[] = $value;
-            
-            $count++;
-        }
-
-        // Prepend $format onto $values
-        array_unshift($values, $format);
-        $values = array_merge($values, $where_values);
-
-        // Prepary our query for binding
-        $stmt = $db->prepare("UPDATE {$table} SET {$placeholders} WHERE {$where_clause}");
-        
-        // Dynamically bind values
-        call_user_func_array( array( $stmt, 'bind_param'), $this->ref_values($values));
-        
-        // Execute the query
-        $stmt->execute();
-        
-        // Check for successful insertion
-        if ( $stmt->affected_rows ) {
-            return true;
+        if ($conn->query($sql) === TRUE) {
+            return "Record updated successfully";
+        } else {
+            return "Error: " . $sql . "<br>" . $conn->error;
         }
         
         return false;
+    }
+
+    function getExpiry($bool){
+        // create expiry date
+        $current_timestamp = time();
+        // check to see if got climate data
+        if ($bool){
+            // add one month
+            $expiry = $current_timestamp + 2628000;
+         } else {
+             // add one day
+             $expiry = $current_timestamp + 86400;
+         }
+         return $expiry;
     }
 }
 ?> 
