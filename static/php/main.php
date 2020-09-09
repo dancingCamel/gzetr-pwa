@@ -40,6 +40,7 @@
         $rc_decode = json_decode($rc_result,true);
         $output = handleErrorIfExists($rc_decode);
         if ($output){
+            $jsonEncoded = json_encode($output, JSON_UNESCAPED_UNICODE);
             goto end;
         }
     } else {
@@ -47,6 +48,7 @@
         $rc_decode = json_decode($rc_result,true);
         $output = handleErrorIfExists($rc_decode);
         if ($output){
+            $jsonEncoded = json_encode($output, JSON_UNESCAPED_UNICODE);
             goto end;
         }
         $rc_decode = $rc_decode[0];
@@ -58,6 +60,7 @@
     $oc_decode = json_decode($oc_result,true);
     $output = handleErrorIfExists($oc_decode);
     if ($output){
+        $jsonEncoded = json_encode($output, JSON_UNESCAPED_UNICODE);
         goto end;
     }
 
@@ -76,6 +79,7 @@
     $fb_decode = Factbook::getDataByCountry($oc_decode['components']['country']);
     $output = handleErrorIfExists($fb_decode);
     if ($output){
+        $jsonEncoded = json_encode($output, JSON_UNESCAPED_UNICODE);
         goto end;
     }
 
