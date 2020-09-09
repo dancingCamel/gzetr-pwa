@@ -129,8 +129,11 @@ async function loadCountry(search) {
   }
 
   country = new Country(response);
-  showMain();
-  hideLoader();
+
+  setTimeout(function () {
+    showMain();
+    hideLoader();
+  }, 500);
 }
 
 function hideMain() {

@@ -317,7 +317,9 @@ class Country {
       removeAllChartData(climateChart);
       addChartData(climateChart, "Temp", this.climateData["temp"]);
       addChartData(climateChart, "Precip", this.climateData["precip"]);
+      $("#climateChart").show();
     } else {
+      $("#climateChart").hide();
       $("#climateAlert").show();
     }
     $("#climateOverview").html(this.climateOverview);
