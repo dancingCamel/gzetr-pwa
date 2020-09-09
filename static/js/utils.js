@@ -120,7 +120,7 @@ async function loadCountry(search) {
     response = await Country.getData(search);
   } else {
     // get from localstorage stringified so need to parse
-    response = JSON.parse(getLocalStorage(search));
+    response = getLocalStorage(search);
   }
 
   // error checking
@@ -149,7 +149,7 @@ async function loadCountry(search) {
 
     showMain();
     hideLoader();
-  }, 500);
+  }, 700);
 }
 
 function hideMain() {
@@ -170,8 +170,6 @@ function getLocalStorage(key) {
   const now = new Date();
   // compare the expiry time of the item with the current time
   if (now.getTime() > item.expiry) {
-    // If the item is expired, delete the item from storage
-    // and return null
     localStorage.removeItem(key);
     return null;
   }

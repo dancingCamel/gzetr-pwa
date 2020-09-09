@@ -8,7 +8,7 @@ $(document).ready(async function () {
   var map = new Map("mapid");
 
   $("#searchBtn").click(async function () {
-    let search = $("#searchBox").val();
+    const search = $("#searchBox").val();
     await loadCountry(search);
     country.populatePrimary();
     country.populateIntro();
