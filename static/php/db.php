@@ -61,15 +61,7 @@ class CountryDb {
         $conn = $this->connect();
 
         // create expiry date
-        $current_timestamp = time();
-        // check to see if got climate data
-        if ($climateData){
-            // add one month
-            $expiry = $current_timestamp + 2628000;
-        } else {
-            // add one day
-            $expiry = $current_timestamp + 86400;
-        }
+        $expiry = $this->getExpiry($climateData);
 
         $dataStr = $conn->real_escape_string($dataStr);
 
