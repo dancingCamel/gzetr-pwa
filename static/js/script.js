@@ -7,56 +7,58 @@ $(document).ready(async function () {
   $(".basicAutoComplete").autoComplete();
   var map = new Map("mapid");
 
-  // if on mobile device, add easy buttons for each modal
-  map.addEasyButton("fa-info-circle", function () {
-    $("#primary").modal("show");
-  });
+  // if on mobile ('small') device, add easy buttons to map for each modal
+  if (window.screen.width < 576) {
+    map.addEasyButton("fa-info-circle", function () {
+      $("#primary").modal("show");
+    });
 
-  map.addEasyButton("fa-glasses", function () {
-    $("#intro").modal("show");
-  });
+    map.addEasyButton("fa-glasses", function () {
+      $("#intro").modal("show");
+    });
 
-  map.addEasyButton("fa-chart-line", function () {
-    if (!country.populatedEconomy) {
-      country.populateEconomy();
-    }
-    $("#economy").modal("show");
-  });
+    map.addEasyButton("fa-chart-line", function () {
+      if (!country.populatedEconomy) {
+        country.populateEconomy();
+      }
+      $("#economy").modal("show");
+    });
 
-  map.addEasyButton("fa-users", function () {
-    if (!country.populatedDemographics) {
-      country.populateDemographics();
-    }
-    $("#demographics").modal("show");
-  });
+    map.addEasyButton("fa-users", function () {
+      if (!country.populatedDemographics) {
+        country.populateDemographics();
+      }
+      $("#demographics").modal("show");
+    });
 
-  map.addEasyButton("fa-cloud", function () {
-    if (!country.populatedClimate) {
-      country.populateClimate();
-    }
-    $("#climateModal").modal("show");
-  });
+    map.addEasyButton("fa-cloud", function () {
+      if (!country.populatedClimate) {
+        country.populateClimate();
+      }
+      $("#climateModal").modal("show");
+    });
 
-  map.addEasyButton("fa-book-open", function () {
-    if (!country.populatedEducation) {
-      country.populateEducation();
-    }
-    $("#education").modal("show");
-  });
+    map.addEasyButton("fa-book-open", function () {
+      if (!country.populatedEducation) {
+        country.populateEducation();
+      }
+      $("#education").modal("show");
+    });
 
-  map.addEasyButton("fa-clock", function () {
-    if (!country.populatedTimezones) {
-      country.populateTimezones();
-    }
-    $("#timezonesModal").modal("show");
-  });
+    map.addEasyButton("fa-clock", function () {
+      if (!country.populatedTimezones) {
+        country.populateTimezones();
+      }
+      $("#timezonesModal").modal("show");
+    });
 
-  map.addEasyButton("fa-heartbeat", function () {
-    if (!country.populatedHealth) {
-      country.populateHealth();
-    }
-    $("#health").modal("show");
-  });
+    map.addEasyButton("fa-heartbeat", function () {
+      if (!country.populatedHealth) {
+        country.populateHealth();
+      }
+      $("#health").modal("show");
+    });
+  }
 
   $("#searchBtn").click(async function () {
     const search = $("#searchBox").val();
