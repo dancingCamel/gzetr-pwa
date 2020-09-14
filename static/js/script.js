@@ -9,6 +9,16 @@ $(document).ready(async function () {
 
   // if on mobile ('small') device, add easy buttons to map for each modal
   if (window.screen.width < 576) {
+    var fixed = document.getElementById("fixed");
+
+    fixed.addEventListener(
+      "touchmove",
+      function (e) {
+        e.preventDefault();
+      },
+      false
+    );
+
     map.addEasyButton("fa-info-circle", function () {
       if (!country.populatedPrimaryModal) {
         country.populatePrimaryModal();

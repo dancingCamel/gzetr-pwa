@@ -153,7 +153,7 @@
       </div>
     </nav>
 
-    <main role="main" class="container mb-5">
+    <main role="main" class="container mb-5" id="fixed">
       <div class="container">
         <div
           class="alert alert-danger"
@@ -168,7 +168,7 @@
             <div id="mapid"></div>
           </div>
 
-          <div class="col-xs-12 col-md-6">
+          <div class="col-xs-12 col-md-6 d-none d-sm-block">
             <div class="container">
               <div class="row justify-content-between">
                 <div class="col-xs-4">
@@ -250,712 +250,701 @@
           </div>
         </div>
 
-        <div class="row mb-3">
+        <div class="row mb-3 d-none d-sm-block">
           <div class="d-none d-md-block mt-4">
             <p id="introBlock">An introduction.</p>
           </div>
         </div>
 
-        <div class="row justify-content-around">
-          <!-- Modal Trigger Buttons -->
-          <button
-            type="button"
-            class="btn btn-primary mr-sm-3 my-2 d-md-none col-sm-4"
-            data-toggle="modal"
-            data-target="#intro"
-          >
-            <i class="fas fa-glasses mr-2"></i>Introduction
-          </button>
-
-          <button
-            type="button"
-            class="btn btn-primary mr-sm-3 my-2 col-12 col-sm-4 col-lg-3"
-            data-toggle="modal"
-            data-target="#economy"
-            id="econModalBtn"
-          >
-            <i class="fas fa-chart-line mr-2"></i>Economy
-          </button>
-
-          <button
-            type="button"
-            class="btn btn-primary mr-sm-3 my-2 col-12 col-sm-4 col-lg-3"
-            data-toggle="modal"
-            data-target="#demographics"
-            id="demographicsModalBtn"
-          >
-            <i class="fas fa-users mr-2"></i>Demographics
-          </button>
-
-          <button
-            type="button"
-            class="btn btn-primary mr-sm-3 my-2 col-12 col-sm-4 col-lg-3"
-            data-toggle="modal"
-            data-target="#climateModal"
-            id="climateModalBtn"
-          >
-            <i class="fas fa-cloud mr-2"></i>Climate
-          </button>
-
-          <button
-            type="button"
-            class="btn btn-primary mr-sm-3 my-2 col-12 col-sm-4 col-lg-3"
-            data-toggle="modal"
-            data-target="#education"
-            id="educationModalBtn"
-          >
-            <i class="fas fa-book-open mr-2"></i>Education
-          </button>
-
-          <button
-            type="button"
-            class="btn btn-primary mr-sm-3 my-2 col-12 col-sm-4 col-lg-3"
-            data-toggle="modal"
-            data-target="#geography"
-            id="geographyModalBtn"
-          >
-            <i class="fas fa-mountain mr-2"></i>Geography
-          </button>
-
-          <button
-            type="button"
-            class="btn btn-primary mr-sm-3 my-2 col-12 col-sm-4 col-lg-3"
-            data-toggle="modal"
-            data-target="#timezonesModal"
-            id="timezonesModalBtn"
-          >
-            <i class="fas fa-clock mr-2"></i>Timezones
-          </button>
-
-          <button
-            type="button"
-            class="btn btn-primary mr-sm-3 my-2 col-12 col-sm-4 col-lg-3"
-            data-toggle="modal"
-            data-target="#health"
-            id="healthModalBtn"
-          >
-            <i class="fas fa-heartbeat mr-2"></i>Health
-          </button>
-
-          <!-- Modals -->
-          <!-- Primary -->
-          <div
-            class="modal fade"
-            id="primary"
-            tabindex="-1"
-            aria-labelledby="introModalLabel"
-            aria-hidden="true"
-          >
-            <div
-              class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
+        <div class="d-none d-sm-block">
+          <div class="row justify-content-around">
+            <!-- Modal Trigger Buttons -->
+            <button
+              type="button"
+              class="btn btn-primary mr-sm-3 my-2 d-md-none col-sm-4"
+              data-toggle="modal"
+              data-target="#intro"
             >
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="introModalLabel">General Info</h5>
-                  <button
-                    type="button"
-                    class="close"
-                    data-dismiss="modal"
-                    aria-label="Close"
-                  >
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  <div class="col-xs-12 col-md-6">
-                    <div class="container">
-                      <div class="row justify-content-between">
-                        <div class="col-xs-4">
-                          <h5 id="countryNameModal"></h5>
-                          <h5 class="text-muted" id="nounAdjModal">
-                            <span id="nounModal"></span> /
-                            <span id="adjModal"></span>
-                          </h5>
-                        </div>
-                        <div class="col-xs-4">
-                          <img
-                            src="https://via.placeholder.com/130x75.png?text=Flag"
-                            alt="flag"
-                            id="flagModal"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                    <div class="container mt-3">
-                      <div class="row justify-content-between">
-                        <div class="mr-4">Capital City:</div>
-                        <div class="" id="capitalModal"></div>
-                      </div>
+              <i class="fas fa-glasses mr-2"></i>Introduction
+            </button>
 
-                      <div class="row justify-content-between">
-                        <div class="mr-4">Area:</div>
-                        <div class="">
-                          <span id="areaModal"></span>m<sup>2</sup>
-                        </div>
-                      </div>
+            <button
+              type="button"
+              class="btn btn-primary mr-sm-3 my-2 col-12 col-sm-4 col-lg-3"
+              data-toggle="modal"
+              data-target="#economy"
+              id="econModalBtn"
+            >
+              <i class="fas fa-chart-line mr-2"></i>Economy
+            </button>
 
-                      <div class="row justify-content-between">
-                        <div class="mr-4">Population:</div>
-                        <div class="" id="populationModal"></div>
-                      </div>
+            <button
+              type="button"
+              class="btn btn-primary mr-sm-3 my-2 col-12 col-sm-4 col-lg-3"
+              data-toggle="modal"
+              data-target="#demographics"
+              id="demographicsModalBtn"
+            >
+              <i class="fas fa-users mr-2"></i>Demographics
+            </button>
 
-                      <div class="row justify-content-between">
-                        <div class="mr-4">GDP:</div>
-                        <div class="">$<span id="gdpModal"></span></div>
-                      </div>
+            <button
+              type="button"
+              class="btn btn-primary mr-sm-3 my-2 col-12 col-sm-4 col-lg-3"
+              data-toggle="modal"
+              data-target="#climateModal"
+              id="climateModalBtn"
+            >
+              <i class="fas fa-cloud mr-2"></i>Climate
+            </button>
 
-                      <div class="row justify-content-between">
-                        <div class="mr-4">GDP/Capita:</div>
-                        <div class="">$<span id="gdpCapitaModal"></span></div>
-                      </div>
+            <button
+              type="button"
+              class="btn btn-primary mr-sm-3 my-2 col-12 col-sm-4 col-lg-3"
+              data-toggle="modal"
+              data-target="#education"
+              id="educationModalBtn"
+            >
+              <i class="fas fa-book-open mr-2"></i>Education
+            </button>
 
-                      <div class="row justify-content-between">
-                        <div class="mr-4">Off. Languages:</div>
-                        <div class="" id="officialLangModal"></div>
-                      </div>
+            <button
+              type="button"
+              class="btn btn-primary mr-sm-3 my-2 col-12 col-sm-4 col-lg-3"
+              data-toggle="modal"
+              data-target="#geography"
+              id="geographyModalBtn"
+            >
+              <i class="fas fa-mountain mr-2"></i>Geography
+            </button>
 
-                      <div class="row justify-content-between">
-                        <div class="mr-4">TLD:</div>
-                        <div class="" id="tldModal"></div>
-                      </div>
+            <button
+              type="button"
+              class="btn btn-primary mr-sm-3 my-2 col-12 col-sm-4 col-lg-3"
+              data-toggle="modal"
+              data-target="#timezonesModal"
+              id="timezonesModalBtn"
+            >
+              <i class="fas fa-clock mr-2"></i>Timezones
+            </button>
 
-                      <div class="row justify-content-between">
-                        <div class="mr-4">Calling Code:</div>
-                        <div class="">
-                          <span id="callingCodeModal"></span>
-                        </div>
-                      </div>
-
-                      <div class="row justify-content-between">
-                        <div class="mr-4">Currency:</div>
-                        <div class="">
-                          <span id="currencySymbolModal"></span> (<span
-                            id="currencyNameModal"
-                          ></span
-                          >)
-                        </div>
-                      </div>
-
-                      <div class="row justify-content-between">
-                        <div class="mr-4">Wikipedia:</div>
-                        <div class="">
-                          <a
-                            href="https://wikipedia.com"
-                            id="wikiLinkModal"
-                          ></a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="modal-footer">
-                  <button
-                    type="button"
-                    class="btn btn-secondary"
-                    data-dismiss="modal"
-                  >
-                    Close
-                  </button>
-                </div>
-              </div>
-            </div>
+            <button
+              type="button"
+              class="btn btn-primary mr-sm-3 my-2 col-12 col-sm-4 col-lg-3"
+              data-toggle="modal"
+              data-target="#health"
+              id="healthModalBtn"
+            >
+              <i class="fas fa-heartbeat mr-2"></i>Health
+            </button>
           </div>
+        </div>
 
-          <!-- data -->
-
-          <!-- Background -->
+        <!-- Modals -->
+        <!-- Primary -->
+        <div
+          class="modal fade"
+          id="primary"
+          tabindex="-1"
+          aria-labelledby="introModalLabel"
+          aria-hidden="true"
+        >
           <div
-            class="modal fade"
-            id="intro"
-            tabindex="-1"
-            aria-labelledby="introModalLabel"
-            aria-hidden="true"
+            class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
           >
-            <div
-              class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
-            >
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="introModalLabel">Background</h5>
-                  <button
-                    type="button"
-                    class="close"
-                    data-dismiss="modal"
-                    aria-label="Close"
-                  >
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  <p id="introModal">Background info</p>
-                </div>
-                <div class="modal-footer">
-                  <button
-                    type="button"
-                    class="btn btn-secondary"
-                    data-dismiss="modal"
-                  >
-                    Close
-                  </button>
-                </div>
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="introModalLabel">General Info</h5>
+                <button
+                  type="button"
+                  class="close"
+                  data-dismiss="modal"
+                  aria-label="Close"
+                >
+                  <span aria-hidden="true">&times;</span>
+                </button>
               </div>
-            </div>
-          </div>
-
-          <!-- Economy -->
-          <div
-            class="modal fade"
-            id="economy"
-            tabindex="-1"
-            aria-labelledby="economyModalLabel"
-            aria-hidden="true"
-          >
-            <div
-              class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
-            >
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="economyModalLabel">Economy</h5>
-                  <button
-                    type="button"
-                    class="close"
-                    data-dismiss="modal"
-                    aria-label="Close"
-                  >
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  <div class="container mt-2">
+              <div class="modal-body">
+                <div class="col-xs-12 col-md-6">
+                  <div class="container">
                     <div class="row justify-content-between">
-                      <div class="mr-4">Overview:</div>
-                      <div class="" id="econOverview"></div>
-                    </div>
-
-                    <div class="row justify-content-between mt-3">
-                      <div class="mr-4">GDP Growth:</div>
-                      <div class="" id="gdpGrowth"></div>
-                    </div>
-
-                    <div class="row justify-content-between mt-2">
-                      <div class="mr-4">Historical GDP:</div>
-                      <table id="historicalGDP"></table>
-                    </div>
-
-                    <div class="row justify-content-between mt-2">
-                      <div class="mr-4">Hist. GDP/Capita:</div>
-                      <table class="" id="historicalGdpCapita"></table>
-                    </div>
-
-                    <div class="row justify-content-between mt-2">
-                      <div class="mr-4">Inflation:</div>
-                      <div class="" id="inflation"></div>
-                    </div>
-
-                    <div class="row justify-content-between mt-2">
-                      <div class="mr-4">Unemployment</div>
-                      <div class="" id="unemployment"></div>
-                    </div>
-
-                    <div class="row justify-content-between mt-2">
-                      <div class="mr-4">Imports:</div>
-                      <div class="" id="imports"></div>
-                    </div>
-
-                    <div class="row justify-content-between mt-2">
-                      <div class="mr-4">Exports:</div>
-                      <div class="" id="exports"></div>
-                    </div>
-                  </div>
-                </div>
-                <div class="modal-footer">
-                  <button
-                    type="button"
-                    class="btn btn-secondary"
-                    data-dismiss="modal"
-                  >
-                    Close
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Demographics -->
-          <div
-            class="modal fade"
-            id="demographics"
-            tabindex="-1"
-            aria-labelledby="demographicsModalLabel"
-            aria-hidden="true"
-          >
-            <div
-              class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
-            >
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="demographicsModalLabel">
-                    Demographics
-                  </h5>
-                  <button
-                    type="button"
-                    class="close"
-                    data-dismiss="modal"
-                    aria-label="Close"
-                  >
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  <div class="container mt-2">
-                    <div class="row justify-content-between">
-                      <div class="mr-4">Population Growth:</div>
-                      <div class="" id="populationGrowth"></div>
-                    </div>
-
-                    <div class="row justify-content-between mt-3">
-                      <div class="mr-4">Religions:</div>
-                      <table class="" id="religions"></table>
-                    </div>
-
-                    <div class="row justify-content-between mt-2">
-                      <div class="mr-4">Ethnicity:</div>
-                      <table id="ethnicity"></table>
-                    </div>
-
-                    <div class="row justify-content-between mt-2">
-                      <div class="mr-4">Languages:</div>
-                      <table class="" id="languages"></table>
-                    </div>
-
-                    <div class="row justify-content-between mt-2">
-                      <div class="mr-4">Ages:</div>
-
-                      <canvas id="ageChart" width="400" height="400"></canvas>
-                    </div>
-                  </div>
-                </div>
-                <div class="modal-footer">
-                  <button
-                    type="button"
-                    class="btn btn-secondary"
-                    data-dismiss="modal"
-                  >
-                    Close
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Climate -->
-          <div
-            class="modal fade"
-            id="climateModal"
-            tabindex="-1"
-            aria-labelledby="climateModalLabel"
-            aria-hidden="true"
-          >
-            <div
-              class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
-            >
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="climateModalLabel">Climate</h5>
-                  <button
-                    type="button"
-                    class="close"
-                    data-dismiss="modal"
-                    aria-label="Close"
-                  >
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  <div class="container mt-2">
-                    <div class="row justify-content-between mt-2">
-                      <div class="mr-4">Climate Overview:</div>
-                      <div class="" id="climateOverview"></div>
-                    </div>
-
-                    <div class="row justify-content-between mt-2">
-                      <div class="mr-4">Climate Chart:</div>
-                      <div
-                        class="alert alert-danger"
-                        role="alert"
-                        id="climateAlert"
-                        sytle="display: none;"
-                      >
-                        Error: Couldn't find climate data for this country.
+                      <div class="col-xs-4">
+                        <h5 id="countryNameModal"></h5>
+                        <h5 class="text-muted" id="nounAdjModal">
+                          <span id="nounModal"></span> /
+                          <span id="adjModal"></span>
+                        </h5>
                       </div>
-                      <canvas
-                        id="climateChart"
-                        width="400"
-                        height="400"
-                      ></canvas>
+                      <div class="col-xs-4">
+                        <img
+                          src="https://via.placeholder.com/130x75.png?text=Flag"
+                          alt="flag"
+                          id="flagModal"
+                        />
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div class="modal-footer">
-                  <button
-                    type="button"
-                    class="btn btn-secondary"
-                    data-dismiss="modal"
-                  >
-                    Close
-                  </button>
+                  <div class="container mt-3">
+                    <div class="row justify-content-between">
+                      <div class="mr-4">Capital City:</div>
+                      <div class="" id="capitalModal"></div>
+                    </div>
+
+                    <div class="row justify-content-between">
+                      <div class="mr-4">Area:</div>
+                      <div class="">
+                        <span id="areaModal"></span>m<sup>2</sup>
+                      </div>
+                    </div>
+
+                    <div class="row justify-content-between">
+                      <div class="mr-4">Population:</div>
+                      <div class="" id="populationModal"></div>
+                    </div>
+
+                    <div class="row justify-content-between">
+                      <div class="mr-4">GDP:</div>
+                      <div class="">$<span id="gdpModal"></span></div>
+                    </div>
+
+                    <div class="row justify-content-between">
+                      <div class="mr-4">GDP/Capita:</div>
+                      <div class="">$<span id="gdpCapitaModal"></span></div>
+                    </div>
+
+                    <div class="row justify-content-between">
+                      <div class="mr-4">Off. Languages:</div>
+                      <div class="" id="officialLangModal"></div>
+                    </div>
+
+                    <div class="row justify-content-between">
+                      <div class="mr-4">TLD:</div>
+                      <div class="" id="tldModal"></div>
+                    </div>
+
+                    <div class="row justify-content-between">
+                      <div class="mr-4">Calling Code:</div>
+                      <div class="">
+                        <span id="callingCodeModal"></span>
+                      </div>
+                    </div>
+
+                    <div class="row justify-content-between">
+                      <div class="mr-4">Currency:</div>
+                      <div class="">
+                        <span id="currencySymbolModal"></span> (<span
+                          id="currencyNameModal"
+                        ></span
+                        >)
+                      </div>
+                    </div>
+
+                    <div class="row justify-content-between">
+                      <div class="mr-4">Wikipedia:</div>
+                      <div class="">
+                        <a href="https://wikipedia.com" id="wikiLinkModal"></a>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>
-
-          <!-- Education -->
-          <div
-            class="modal fade"
-            id="education"
-            tabindex="-1"
-            aria-labelledby="educationModalLabel"
-            aria-hidden="true"
-          >
-            <div
-              class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
-            >
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="educationModalLabel">
-                    Education
-                  </h5>
-                  <button
-                    type="button"
-                    class="close"
-                    data-dismiss="modal"
-                    aria-label="Close"
-                  >
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  <div class="container mt-2">
-                    <div class="row justify-content-between">
-                      <div class="mr-4">Literacy:</div>
-                      <div class="" id="literacy"></div>
-                    </div>
-
-                    <div class="row justify-content-between mt-3">
-                      <div class="mr-4">Years In School:</div>
-                      <div class="" id="yearsInSchool"></div>
-                    </div>
-
-                    <div class="row justify-content-between mt-3">
-                      <div class="mr-4">Expenditure:</div>
-                      <div class="" id="eduExpenditure"></div>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="modal-footer">
-                  <button
-                    type="button"
-                    class="btn btn-secondary"
-                    data-dismiss="modal"
-                  >
-                    Close
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Timezones -->
-          <div
-            class="modal fade"
-            id="timezonesModal"
-            tabindex="-1"
-            aria-labelledby="timezonesModalLabel"
-            aria-hidden="true"
-          >
-            <div
-              class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
-            >
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="timezonesModalLabel">
-                    Timezones
-                  </h5>
-                  <button
-                    type="button"
-                    class="close"
-                    data-dismiss="modal"
-                    aria-label="Close"
-                  >
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  <div class="container mt-2">
-                    <div class="row justify-content-between">
-                      <div class="mr-4">Timezones:</div>
-                      <table class="" id="timezones"></table>
-                    </div>
-                  </div>
-                </div>
-                <div class="modal-footer">
-                  <button
-                    type="button"
-                    class="btn btn-secondary"
-                    data-dismiss="modal"
-                  >
-                    Close
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Geography -->
-          <div
-            class="modal fade"
-            id="geography"
-            tabindex="-1"
-            aria-labelledby="geographyModalLabel"
-            aria-hidden="true"
-          >
-            <div
-              class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
-            >
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="geographyModalLabel">
-                    Geography
-                  </h5>
-                  <button
-                    type="button"
-                    class="close"
-                    data-dismiss="modal"
-                    aria-label="Close"
-                  >
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  <div class="container mt-2">
-                    <div class="row justify-content-between">
-                      <div class="mr-4">Highest Pt.:</div>
-                      <div class="" id="highestPoint"></div>
-                    </div>
-
-                    <div class="row justify-content-between mt-3">
-                      <div class="mr-4">Lowest Pt.:</div>
-                      <div class="" id="lowestPoint"></div>
-                    </div>
-
-                    <div class="row justify-content-between mt-3">
-                      <div class="mr-4">Natural Hazards:</div>
-                      <div class="" id="natHaz"></div>
-                    </div>
-                    <div class="row justify-content-between mt-3">
-                      <div class="mr-4">Natural Resources:</div>
-                      <div class="" id="natResources"></div>
-                    </div>
-                  </div>
-                </div>
-                <div class="modal-footer">
-                  <button
-                    type="button"
-                    class="btn btn-secondary"
-                    data-dismiss="modal"
-                  >
-                    Close
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Health -->
-          <div
-            class="modal fade"
-            id="health"
-            tabindex="-1"
-            aria-labelledby="healthModalLabel"
-            aria-hidden="true"
-          >
-            <div
-              class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
-            >
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="healthModalLabel">Health</h5>
-                  <button
-                    type="button"
-                    class="close"
-                    data-dismiss="modal"
-                    aria-label="Close"
-                  >
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  <div class="container mt-2">
-                    <div class="row justify-content-between">
-                      <div class="mr-4">Birth Rate:</div>
-                      <div class="" id="birthRate"></div>
-                    </div>
-                    <div class="row justify-content-between mt-3">
-                      <div class="mr-4">Death Rate:</div>
-                      <div class="" id="deathRate"></div>
-                    </div>
-                    <div class="row justify-content-between mt-3">
-                      <div class="mr-4">Life Expectancy:</div>
-                      <div class="" id="lifeExpectancy"></div>
-                    </div>
-                    <div class="row justify-content-between mt-3">
-                      <div class="mr-4">Fertility Rate:</div>
-                      <div class="" id="fertilityRate"></div>
-                    </div>
-                    <div class="row justify-content-between mt-3">
-                      <div class="mr-4">Inf. Mortality:</div>
-                      <div class="" id="infMortality"></div>
-                    </div>
-
-                    <div class="row justify-content-between mt-3">
-                      <div class="mr-4">Clean Water:</div>
-                      <div class="" id="cleanWater"></div>
-                    </div>
-                    <div class="row justify-content-between mt-3">
-                      <div class="mr-4">Sanitation:</div>
-                      <div class="" id="sanitation"></div>
-                    </div>
-                    <div class="row justify-content-between mt-3">
-                      <div class="mr-4">HIV:</div>
-                      <div class="" id="hiv"></div>
-                    </div>
-                    <div class="row justify-content-between mt-3">
-                      <div class="mr-4">Obesity:</div>
-                      <div class="" id="obesity"></div>
-                    </div>
-                  </div>
-                </div>
-                <div class="modal-footer">
-                  <button
-                    type="button"
-                    class="btn btn-secondary"
-                    data-dismiss="modal"
-                  >
-                    Close
-                  </button>
-                </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-dismiss="modal"
+                >
+                  Close
+                </button>
               </div>
             </div>
           </div>
         </div>
+
+        <!-- Background -->
+        <div
+          class="modal fade"
+          id="intro"
+          tabindex="-1"
+          aria-labelledby="introModalLabel"
+          aria-hidden="true"
+        >
+          <div
+            class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
+          >
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="introModalLabel">Background</h5>
+                <button
+                  type="button"
+                  class="close"
+                  data-dismiss="modal"
+                  aria-label="Close"
+                >
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <p id="introModal">Background info</p>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-dismiss="modal"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Economy -->
+        <div
+          class="modal fade"
+          id="economy"
+          tabindex="-1"
+          aria-labelledby="economyModalLabel"
+          aria-hidden="true"
+        >
+          <div
+            class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
+          >
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="economyModalLabel">Economy</h5>
+                <button
+                  type="button"
+                  class="close"
+                  data-dismiss="modal"
+                  aria-label="Close"
+                >
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div class="container mt-2">
+                  <div class="row justify-content-between">
+                    <div class="mr-4">Overview:</div>
+                    <div class="" id="econOverview"></div>
+                  </div>
+
+                  <div class="row justify-content-between mt-3">
+                    <div class="mr-4">GDP Growth:</div>
+                    <div class="" id="gdpGrowth"></div>
+                  </div>
+
+                  <div class="row justify-content-between mt-2">
+                    <div class="mr-4">Historical GDP:</div>
+                    <table id="historicalGDP"></table>
+                  </div>
+
+                  <div class="row justify-content-between mt-2">
+                    <div class="mr-4">Hist. GDP/Capita:</div>
+                    <table class="" id="historicalGdpCapita"></table>
+                  </div>
+
+                  <div class="row justify-content-between mt-2">
+                    <div class="mr-4">Inflation:</div>
+                    <div class="" id="inflation"></div>
+                  </div>
+
+                  <div class="row justify-content-between mt-2">
+                    <div class="mr-4">Unemployment</div>
+                    <div class="" id="unemployment"></div>
+                  </div>
+
+                  <div class="row justify-content-between mt-2">
+                    <div class="mr-4">Imports:</div>
+                    <div class="" id="imports"></div>
+                  </div>
+
+                  <div class="row justify-content-between mt-2">
+                    <div class="mr-4">Exports:</div>
+                    <div class="" id="exports"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-dismiss="modal"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Demographics -->
+        <div
+          class="modal fade"
+          id="demographics"
+          tabindex="-1"
+          aria-labelledby="demographicsModalLabel"
+          aria-hidden="true"
+        >
+          <div
+            class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
+          >
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="demographicsModalLabel">
+                  Demographics
+                </h5>
+                <button
+                  type="button"
+                  class="close"
+                  data-dismiss="modal"
+                  aria-label="Close"
+                >
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div class="container mt-2">
+                  <div class="row justify-content-between">
+                    <div class="mr-4">Population Growth:</div>
+                    <div class="" id="populationGrowth"></div>
+                  </div>
+
+                  <div class="row justify-content-between mt-3">
+                    <div class="mr-4">Religions:</div>
+                    <table class="" id="religions"></table>
+                  </div>
+
+                  <div class="row justify-content-between mt-2">
+                    <div class="mr-4">Ethnicity:</div>
+                    <table id="ethnicity"></table>
+                  </div>
+
+                  <div class="row justify-content-between mt-2">
+                    <div class="mr-4">Languages:</div>
+                    <table class="" id="languages"></table>
+                  </div>
+
+                  <div class="row justify-content-between mt-2">
+                    <div class="mr-4">Ages:</div>
+
+                    <canvas id="ageChart" width="400" height="400"></canvas>
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-dismiss="modal"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Climate -->
+        <div
+          class="modal fade"
+          id="climateModal"
+          tabindex="-1"
+          aria-labelledby="climateModalLabel"
+          aria-hidden="true"
+        >
+          <div
+            class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
+          >
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="climateModalLabel">Climate</h5>
+                <button
+                  type="button"
+                  class="close"
+                  data-dismiss="modal"
+                  aria-label="Close"
+                >
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div class="container mt-2">
+                  <div class="row justify-content-between mt-2">
+                    <div class="mr-4">Climate Overview:</div>
+                    <div class="" id="climateOverview"></div>
+                  </div>
+
+                  <div class="row justify-content-between mt-2">
+                    <div class="mr-4">Climate Chart:</div>
+                    <div
+                      class="alert alert-danger"
+                      role="alert"
+                      id="climateAlert"
+                      sytle="display: none;"
+                    >
+                      Error: Couldn't find climate data for this country.
+                    </div>
+                    <canvas id="climateChart" width="400" height="400"></canvas>
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-dismiss="modal"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Education -->
+        <div
+          class="modal fade"
+          id="education"
+          tabindex="-1"
+          aria-labelledby="educationModalLabel"
+          aria-hidden="true"
+        >
+          <div
+            class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
+          >
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="educationModalLabel">Education</h5>
+                <button
+                  type="button"
+                  class="close"
+                  data-dismiss="modal"
+                  aria-label="Close"
+                >
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div class="container mt-2">
+                  <div class="row justify-content-between">
+                    <div class="mr-4">Literacy:</div>
+                    <div class="" id="literacy"></div>
+                  </div>
+
+                  <div class="row justify-content-between mt-3">
+                    <div class="mr-4">Years In School:</div>
+                    <div class="" id="yearsInSchool"></div>
+                  </div>
+
+                  <div class="row justify-content-between mt-3">
+                    <div class="mr-4">Expenditure:</div>
+                    <div class="" id="eduExpenditure"></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-dismiss="modal"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Timezones -->
+        <div
+          class="modal fade"
+          id="timezonesModal"
+          tabindex="-1"
+          aria-labelledby="timezonesModalLabel"
+          aria-hidden="true"
+        >
+          <div
+            class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
+          >
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="timezonesModalLabel">Timezones</h5>
+                <button
+                  type="button"
+                  class="close"
+                  data-dismiss="modal"
+                  aria-label="Close"
+                >
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div class="container mt-2">
+                  <div class="row justify-content-between">
+                    <div class="mr-4">Timezones:</div>
+                    <table class="" id="timezones"></table>
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-dismiss="modal"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Geography -->
+        <div
+          class="modal fade"
+          id="geography"
+          tabindex="-1"
+          aria-labelledby="geographyModalLabel"
+          aria-hidden="true"
+        >
+          <div
+            class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
+          >
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="geographyModalLabel">Geography</h5>
+                <button
+                  type="button"
+                  class="close"
+                  data-dismiss="modal"
+                  aria-label="Close"
+                >
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div class="container mt-2">
+                  <div class="row justify-content-between">
+                    <div class="mr-4">Highest Pt.:</div>
+                    <div class="" id="highestPoint"></div>
+                  </div>
+
+                  <div class="row justify-content-between mt-3">
+                    <div class="mr-4">Lowest Pt.:</div>
+                    <div class="" id="lowestPoint"></div>
+                  </div>
+
+                  <div class="row justify-content-between mt-3">
+                    <div class="mr-4">Natural Hazards:</div>
+                    <div class="" id="natHaz"></div>
+                  </div>
+                  <div class="row justify-content-between mt-3">
+                    <div class="mr-4">Natural Resources:</div>
+                    <div class="" id="natResources"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-dismiss="modal"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Health -->
+        <div
+          class="modal fade"
+          id="health"
+          tabindex="-1"
+          aria-labelledby="healthModalLabel"
+          aria-hidden="true"
+        >
+          <div
+            class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
+          >
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="healthModalLabel">Health</h5>
+                <button
+                  type="button"
+                  class="close"
+                  data-dismiss="modal"
+                  aria-label="Close"
+                >
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div class="container mt-2">
+                  <div class="row justify-content-between">
+                    <div class="mr-4">Birth Rate:</div>
+                    <div class="" id="birthRate"></div>
+                  </div>
+                  <div class="row justify-content-between mt-3">
+                    <div class="mr-4">Death Rate:</div>
+                    <div class="" id="deathRate"></div>
+                  </div>
+                  <div class="row justify-content-between mt-3">
+                    <div class="mr-4">Life Expectancy:</div>
+                    <div class="" id="lifeExpectancy"></div>
+                  </div>
+                  <div class="row justify-content-between mt-3">
+                    <div class="mr-4">Fertility Rate:</div>
+                    <div class="" id="fertilityRate"></div>
+                  </div>
+                  <div class="row justify-content-between mt-3">
+                    <div class="mr-4">Inf. Mortality:</div>
+                    <div class="" id="infMortality"></div>
+                  </div>
+
+                  <div class="row justify-content-between mt-3">
+                    <div class="mr-4">Clean Water:</div>
+                    <div class="" id="cleanWater"></div>
+                  </div>
+                  <div class="row justify-content-between mt-3">
+                    <div class="mr-4">Sanitation:</div>
+                    <div class="" id="sanitation"></div>
+                  </div>
+                  <div class="row justify-content-between mt-3">
+                    <div class="mr-4">HIV:</div>
+                    <div class="" id="hiv"></div>
+                  </div>
+                  <div class="row justify-content-between mt-3">
+                    <div class="mr-4">Obesity:</div>
+                    <div class="" id="obesity"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-dismiss="modal"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <!-- /modals -->
       </div>
     </main>
 
     <!-- Footer -->
-    <hr />
-    <footer class="footer">
+
+    <footer class="footer d-none d-sm-block">
+      <hr />
       <div class="container">
         <span class="text-muted">
           <div class="footer-copyright text-center py-3">
