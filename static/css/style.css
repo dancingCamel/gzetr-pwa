@@ -27,11 +27,14 @@ main {
 }
 
 #countryName,
-#nounAdj {
+#countryNameModal,
+#nounAdj,
+#nounAdjModal {
   max-width: 250px;
 }
 
-#flag {
+#flag,
+#flagModal {
   width: 85px;
   border: 1px solid gray;
 }

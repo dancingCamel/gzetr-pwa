@@ -338,6 +338,131 @@
           </button>
 
           <!-- Modals -->
+          <!-- Primary -->
+          <div
+            class="modal fade"
+            id="primary"
+            tabindex="-1"
+            aria-labelledby="introModalLabel"
+            aria-hidden="true"
+          >
+            <div
+              class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
+            >
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="introModalLabel">General Info</h5>
+                  <button
+                    type="button"
+                    class="close"
+                    data-dismiss="modal"
+                    aria-label="Close"
+                  >
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <div class="col-xs-12 col-md-6">
+                    <div class="container">
+                      <div class="row justify-content-between">
+                        <div class="col-xs-4">
+                          <h5 id="countryNameModal"></h5>
+                          <h5 class="text-muted" id="nounAdjModal">
+                            <span id="nounModal"></span> /
+                            <span id="adjModal"></span>
+                          </h5>
+                        </div>
+                        <div class="col-xs-4">
+                          <img
+                            src="https://via.placeholder.com/130x75.png?text=Flag"
+                            alt="flag"
+                            id="flagModal"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <div class="container mt-3">
+                      <div class="row justify-content-between">
+                        <div class="mr-4">Capital City:</div>
+                        <div class="" id="capitalModal"></div>
+                      </div>
+
+                      <div class="row justify-content-between">
+                        <div class="mr-4">Area:</div>
+                        <div class="">
+                          <span id="areaModal"></span>m<sup>2</sup>
+                        </div>
+                      </div>
+
+                      <div class="row justify-content-between">
+                        <div class="mr-4">Population:</div>
+                        <div class="" id="populationModal"></div>
+                      </div>
+
+                      <div class="row justify-content-between">
+                        <div class="mr-4">GDP:</div>
+                        <div class="">$<span id="gdpModal"></span></div>
+                      </div>
+
+                      <div class="row justify-content-between">
+                        <div class="mr-4">GDP/Capita:</div>
+                        <div class="">$<span id="gdpCapitaModal"></span></div>
+                      </div>
+
+                      <div class="row justify-content-between">
+                        <div class="mr-4">Off. Languages:</div>
+                        <div class="" id="officialLangModal"></div>
+                      </div>
+
+                      <div class="row justify-content-between">
+                        <div class="mr-4">TLD:</div>
+                        <div class="" id="tldModal"></div>
+                      </div>
+
+                      <div class="row justify-content-between">
+                        <div class="mr-4">Calling Code:</div>
+                        <div class="">
+                          <span id="callingCodeModal"></span>
+                        </div>
+                      </div>
+
+                      <div class="row justify-content-between">
+                        <div class="mr-4">Currency:</div>
+                        <div class="">
+                          <span id="currencySymbolModal"></span> (<span
+                            id="currencyNameModal"
+                          ></span
+                          >)
+                        </div>
+                      </div>
+
+                      <div class="row justify-content-between">
+                        <div class="mr-4">Wikipedia:</div>
+                        <div class="">
+                          <a
+                            href="https://wikipedia.com"
+                            id="wikiLinkModal"
+                          ></a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-dismiss="modal"
+                  >
+                    Close
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- data -->
+
           <!-- Background -->
           <div
             class="modal fade"

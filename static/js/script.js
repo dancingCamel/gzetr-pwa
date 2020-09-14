@@ -10,6 +10,9 @@ $(document).ready(async function () {
   // if on mobile ('small') device, add easy buttons to map for each modal
   if (window.screen.width < 576) {
     map.addEasyButton("fa-info-circle", function () {
+      if (!country.populatedPrimaryModal) {
+        country.populatePrimaryModal();
+      }
       $("#primary").modal("show");
     });
 
@@ -63,14 +66,19 @@ $(document).ready(async function () {
   $("#searchBtn").click(async function () {
     const search = $("#searchBox").val();
     await loadCountry(search);
-    country.populatePrimary();
+    if (window.screen.width < 576) {
+      country.populatePrimaryModal();
+    } else {
+      country.populatePrimary();
+    }
+
     country.populateIntro();
     map.setOutline(country.geojson);
   });
 
   $("#searchBox").keydown(function (e) {
-    if (event.which == 13) {
-      event.preventDefault();
+    if (e.which == 13) {
+      e.preventDefault();
       $("#searchBtn").trigger("click");
     }
   });

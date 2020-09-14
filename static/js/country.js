@@ -192,6 +192,7 @@ class Country {
 
     // keep track of which parts of page have been built
     this.populatedPrimary = false;
+    this.populatedPrimaryModal = false;
     this.populatedIntro = false;
     this.populatedEconomy = false;
     this.populatedDemographics = false;
@@ -222,6 +223,28 @@ class Country {
     $("#wikiLink").text(this.wikiText);
 
     this.populatedPrimary = true;
+  }
+
+  populatePrimaryModal() {
+    $("#countryNameModal").html(this.countryName);
+    $("#nounModal").html(this.noun);
+    $("#adjModal").html(this.adj);
+    $("#flagModal").attr("src", this.flag);
+    $("#capitalModal").html(this.capital);
+    $("#areaModal").html(this.area);
+    $("#populationModal").html(this.population);
+    $("#gdpModal").html(this.gdp);
+    $("#gdpCapitaModal").html(this.gdpCapita);
+
+    $("#officialLangModal").html(this.officialLang);
+    $("#tldModal").html(this.tld);
+    $("#callingCodeModal").html(this.callingCodes);
+    $("#currencySymbolModal").html(this.currencySymbol);
+    $("#currencyNameModal").html(this.currencyName);
+    $("#wikiLinkModal").attr("href", this.wikiLink);
+    $("#wikiLinkModal").text(this.wikiText);
+
+    this.populatedPrimaryModal = true;
   }
 
   populateIntro() {
