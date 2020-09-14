@@ -71,4 +71,8 @@ class Map {
   fitBounds() {
     this.map.fitBounds(this.outlineCountry.getBounds());
   }
+
+  addEasyButton(icon, func) {
+    L.easyButton(icon, func).addTo(this.map);
+  }
 }

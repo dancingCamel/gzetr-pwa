@@ -22,7 +22,8 @@ class CountryDb {
             $result = $conn->query("SELECT * FROM countries WHERE alpha2='$country'");
         } else {
             // get country
-            $result = $conn->query("SELECT * FROM countries WHERE NAME='$country'");
+            // $result = $conn->query("SELECT * FROM countries WHERE NAME='$country'");
+            $result = $conn->query("SELECT * FROM countries WHERE name='$country'");
         }
 
         // output data of row
@@ -31,9 +32,11 @@ class CountryDb {
             while($row = $result->fetch_assoc()) {
                 $temp = [];
                 $temp['id'] = $row['id'];
-                $temp['name'] = $row['NAME'];
+                // $temp['name'] = $row['NAME'];
+                $temp['name'] = $row['name'];
                 $temp['alpha2']=$row['alpha2'];
-                $temp['data'] = $row['DATA'];
+                // $temp['data'] = $row['DATA'];
+                $temp['data'] = $row['data'];
                 $temp['expiry'] = $row['expiry'];
                 array_push($output, $temp);
             }
@@ -66,7 +69,8 @@ class CountryDb {
         $dataStr = $conn->real_escape_string($dataStr);
 
         // form sql query - not escaping string as created by own server
-        $sql = "INSERT INTO countries (NAME, alpha2, DATA, expiry) VALUES ('$country', '$alpha', '$dataStr', $expiry);";
+        // $sql = "INSERT INTO countries (NAME, alpha2, DATA, expiry) VALUES ('$country', '$alpha', '$dataStr', $expiry);";
+        $sql = "INSERT INTO countries (name, alpha2, data, expiry) VALUES ('$country', '$alpha', '$dataStr', $expiry);";
 
         if ($conn->query($sql) === TRUE) {
         return "New record created successfully";
@@ -92,7 +96,8 @@ class CountryDb {
         $dataStr = $conn->real_escape_string($dataStr);
         
         // use country name
-        $sql = "UPDATE countries SET alpha2='$alpha', DATA='$dataStr', expiry='$expiry'  WHERE NAME='$country'";
+        // $sql = "UPDATE countries SET alpha2='$alpha', DATA='$dataStr', expiry='$expiry'  WHERE NAME='$country'";
+        $sql = "UPDATE countries SET alpha2='$alpha', data='$dataStr', expiry='$expiry'  WHERE name='$country'";
         
         if ($conn->query($sql) === TRUE) {
             return "Record updated successfully";
