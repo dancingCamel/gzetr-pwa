@@ -351,7 +351,9 @@ class Country {
   }
 
   static async getData(search) {
-    let response = await fetch("../../static/php/main.php?country=" + search);
+    let response = await fetch(
+      "/gzetr-pwa/static/php/main.php?country=" + search
+    );
     let data = await response.json();
 
     return data;
