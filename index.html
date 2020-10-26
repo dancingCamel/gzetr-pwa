@@ -989,5 +989,15 @@
     <script src="/gzetr-pwa/static/js/map.js"></script>
     <script src="/gzetr-pwa/static/js/country.js"></script>
     <script src="/gzetr-pwa/static/js/script.js"></script>
+
+    <script>
+      if ("serviceWorker" in navigator) {
+        navigator.serviceWorker
+          .register("/gzetr-pwa/static/js/sw.js")
+          .then(function () {
+            console.log("Service Worker Registered");
+          });
+      }
+    </script>
   </body>
 </html>
