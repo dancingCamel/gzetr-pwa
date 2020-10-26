@@ -1,2 +1,3 @@
-# gzetr
-A gazetteer of countries
+# gzetr-pwa
+
+A pwa implementation of the gzetr app
