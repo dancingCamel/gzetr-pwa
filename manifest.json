@@ -76,7 +76,7 @@
     },
     {
       "src": "/gzetr-pwa/static/images/gzetr_white.png",
-      "sizes": "512X512",
+      "sizes": "512X175",
       "type": "image/png",
       "density": "4.0"
     }
