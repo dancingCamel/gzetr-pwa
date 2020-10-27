@@ -39,7 +39,7 @@
       "density": "4.0"
     }
   ],
-  "start_url": "/gzetr-pwa/gzetr-pwa/index.html",
+  "start_url": "/gzetr-pwa/gzetr-pwa/",
   "display": "standalone",
   "background_color": "#0067ff",
   "theme_color": "#0067ff"
