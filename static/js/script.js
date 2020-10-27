@@ -10,6 +10,35 @@ if (window.screen.width < 576) {
 }
 
 $(document).ready(async function () {
+  // check online
+  window.addEventListener(
+    "load",
+    function (e) {
+      if (!navigator.onLine) {
+        alert("You're offline and will have a reduced experience.");
+      } else {
+        console.log("We're online...");
+      }
+    },
+    false
+  );
+
+  window.addEventListener(
+    "online",
+    function (e) {
+      console.log("And we're back :).");
+    },
+    false
+  );
+
+  window.addEventListener(
+    "offline",
+    function (e) {
+      alert("It seems you're offline. You may have a reduced experience.");
+    },
+    false
+  );
+
   // page setup
   $(".basicAutoComplete").autoComplete();
   var map = new Map("mapid");
